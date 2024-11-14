@@ -53,13 +53,13 @@ class RequestController extends Controller {
 	public function listMessages($id){
 		$request=new stdClass();
 		$request->request_id=$id;
-		
-
 
 		try {
 			$message=$this->requestService->listMessages($request);
 
-			return response()->json($message,201);
+			return Inertia::render('Request',[
+				'messages'=>$messages
+			]);
 		}
 		catch(Exception $e){
 			return response()->json(['error'=>$e->getMessage()],500);
