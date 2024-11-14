@@ -1,6 +1,6 @@
 <template>
 <div>
-<RequestList />
+<RequestList :messages="messages" />
 
 
 
@@ -20,6 +20,10 @@ import RequestList from '/@Components/RequestList.vue';
 import RetrieveRequest from '/@Components/RetrieveRequest.vue';
 
 export default {
+    props: {
+        messages:Array,
+
+    },
     components: {
         RequestList,
         RetrieveRequest,

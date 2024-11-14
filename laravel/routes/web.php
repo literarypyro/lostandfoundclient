@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/requests/{userId}',[RequestController::class,'listMessages']);
+Route::get('/requests/{requestId}',[RequestController::class,'retrieveRequest']);
