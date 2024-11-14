@@ -1,17 +1,11 @@
 <template>
+<div>Requests Made</div>
 <div>
-<RequestList :messages="messages" />
-
-
-
-
+<RequestList :requests="requests" />
 </div>
 
 <div>
-<RetrieveRequest />
-
-
-
+<RetrieveRequest :requestedId="requestedId" />
 
 </div>
 </template>
@@ -21,8 +15,8 @@ import RetrieveRequest from '/@Components/RetrieveRequest.vue';
 
 export default {
     props: {
-        messages:Array,
-
+        requests:Array,
+        requestedId:String,
     },
     components: {
         RequestList,

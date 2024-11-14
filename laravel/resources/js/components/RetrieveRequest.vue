@@ -1,6 +1,5 @@
 <template>
-<div>
-
+<div v-if="showRetrieveRequest">
 <div></div>
 <div></div>
 <div></div>
@@ -17,14 +16,18 @@
 <script>
 import axios from 'axios';
 
-
 export default {
     props: {
-        requestid:''
+        requestid:String
 
     },
+    data(){
+        return {
+            item:null
+        };
+    },
     mounted() {
-        axios.get('/request/{requestid}')
+        axios.get('/request/{$this.requestedId}')
         .then(response=> {
             this.item=response.data;
         })

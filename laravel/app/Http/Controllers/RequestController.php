@@ -39,9 +39,14 @@ class RequestController extends Controller {
 
 
 		try {
+
 			$item=$this->requestService->detailedItemRequests($request)->toArray();
 
-			return response()->json($item,201);
+			return Inertia::render('Request',[
+				'requests'=>$item
+			]);
+
+
 		}
 		catch(Exception $e){
 			return response()->json(['error'=>$e->getMessage()],500);
@@ -65,6 +70,14 @@ class RequestController extends Controller {
 			return response()->json(['error'=>$e->getMessage()],500);
 		}
 	}
+
+	public function listRequests($record){
+		$request=new stdClass();
+
+		$this->search("userRequests",$record);
+
+	}
+
 	
 	
 	public function retrieveRequest($id){
