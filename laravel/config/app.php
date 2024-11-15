@@ -192,6 +192,7 @@ return [
     | the aliases are "lazy" loaded so they don't hinder performance.
     |
     */
+    'trusted_proxies' => ['127.0.0.1'],
 
     'aliases' => [
 

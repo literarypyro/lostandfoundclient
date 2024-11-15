@@ -1,7 +1,14 @@
 <template>
-
-
-
+    <div>
+        <label></label>
+        <input type="text" />
+    </div>
+    <div>
+        <label></label>
+        <input type="text" />
+    </div>
+    <button @click="loginUser">Log In
+    </button>
 </template>
 <script>
 export default {
@@ -15,7 +22,11 @@ export default {
         RetrieveItem,
     },
     methods: {
+        loginUser: function(){
+            
 
+
+        },
 
 
     }

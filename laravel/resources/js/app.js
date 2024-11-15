@@ -4,7 +4,7 @@ import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/inertia';
 
 createInertiaApp({
-    resolve:name=>requestAnimationFrame('./Pages/${name}.vue'),
+    resolve:name=>require('./Pages/${name}.vue'),
     setup({ el,App,props,plugin}) {
         createApp({ render: () => h(Apps,props) })
         .use(plugin)

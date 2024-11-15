@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return Inertia::render('Login');
 });
 
 Route::get('/requests/{requestId}',['as'=>'retrieve-requests','uses'=>'RequestController@retrieveRequest']);
