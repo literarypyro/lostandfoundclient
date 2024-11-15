@@ -9,6 +9,8 @@ use App\Services\ModifyEntryService;
 
 class ModifyUserService {
 	
+
+
 	public static function listItems($request){
 		
 		$record=$request->record;
@@ -52,20 +54,20 @@ class ModifyUserService {
 	}
 
 	
-	public static function modifyUserProfile($request){
-		$details=\App\Models\UserProfile::whereRaw("user_id='".$request."')"->first();
-		return $details;
+public static function modifyUserProfile($request){
+	$details=\App\Models\UserProfile::whereRaw("user_id='".$request."'")->first();
+	return $details;
 		
-	}
+}
 
 	public static function modifyUserAddress($request){
-		$details=\App\Models\UserAddress::whereRaw("profile_id='".$request."')"->first();
+		$details=\App\Models\UserAddress::whereRaw("profile_id='".$request."'")->first();
 		return $details;
 	
 	}
 
 	public static function addUserContact($request){
-		$details=\App\Models\UserContact::whereRaw("profile_id='".$request."')"->first();
+		$details=\App\Models\UserContact::whereRaw("profile_id='".$request."'")->first();
 		return $details;
 
 	

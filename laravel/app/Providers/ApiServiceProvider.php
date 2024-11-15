@@ -13,10 +13,10 @@ class ApiServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(ApiItemService::class,function(){
-            return new ApiItemService(new CategoryService(),
+        $this->app->bind(ApiService::class,function(){
+            return new ApiService(new CategoryService(),
             new FoundationService(), new ReceiverService(),
-            new ApiService());
+            );
         }          
         );       
         //

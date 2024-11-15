@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Services;
-use App\Models;
+use App\Services\ItemRequestService;
+use App\Models\StatusType;
+use App\Providers;
 //use \App\Controllers;
 
 class RequestController extends Controller {
@@ -12,7 +13,7 @@ class RequestController extends Controller {
 	private $statusType;
 
 
-	public function __construct(RequestService $requestService,StatusType $statusType){
+	public function __construct(ItemRequestService $requestService,StatusType $statusType){
 		$this->requestService=$requestService;
 		$this->statusType=$statusType;
 

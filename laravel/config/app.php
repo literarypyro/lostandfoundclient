@@ -178,6 +178,7 @@ return [
         App\Providers\ItemServiceProvider::class,
         App\Providers\ApiServiceProvider::class,
         App\Providers\UserServiceProvider::class,
+        App\Providers\ClientServiceProvider::class
 
     ],
 

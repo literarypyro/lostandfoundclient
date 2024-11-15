@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/requests/{requestId}',[RequestController::class,'retrieveRequest']);
+Route::get('/requests/{requestId}',['as'=>'retrieve-requests','uses'=>'RequestController@retrieveRequest']);
+
+Route::post('/addrequest/{requestId}',['as'=>'add-request','uses'=>'RequestController@addRequest']);
+
 
 Route::get('/daterangesearch/{searchType}/{searchTerm}/range/{dateRange}',
 ['as'=>'date-range-search','uses'=>'FoundItemController@dateRangeSearch']);
@@ -30,3 +34,27 @@ Route::get('/categorysearch/{searchType}/{searchTerm}/range/{dateRange}',
 
 Route::get('/daterangefound/{searchType}/{searchTerm}/range/{dateRange}',
 ['as'=>'date-range-found','uses'=>'FoundItemController@dateRangeFound']);
+
+Route::get('/item/{itemId}',['as'=>'retrieve-requests','uses'=>'FoundItemController@retrieveItem']);
+
+
+Route::get('/category',
+['as'=>'category-list','uses'=>'ApiController@listCategory']);
+
+Route::get('/itemType/list',
+['as'=>'item-type-list','uses'=>'ApiController@listItemType']);
+
+Route::get('/login',
+['as'=>'item-type-list','uses'=>'AuthController@loginUser']);
+
+Route::get('/register',
+['as'=>'register-user','uses'=>'AuthController@registerUser']);
+
+Route::get('/registerAddress/{id}',
+['as'=>'reg-user-address','uses'=>'AuthController@addUserAddress']);
+
+Route::get('/registerProfile/{id}',
+['as'=>'reg-user-profile','uses'=>'AuthController@addUserProfile']);
+
+Route::get('/registerContact/{id}',
+['as'=>'reg-user-contact','uses'=>'AuthController@addUserContact']);

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Services;
+use App\Services\ApiService;
 use App\Models;
+use App\Providers;
+
 //use \App\Controllers;
 use Illuminate\Support\Str;
 //use Illuminate\Http\Request;
@@ -14,7 +16,7 @@ class ApiController extends Controller {
 
 	private $apiService;
 
-	public function __construct(ApiItemService $apiService){
+	public function __construct(ApiService $apiService){
 		$this->apiService=$apiService;
 
 	}

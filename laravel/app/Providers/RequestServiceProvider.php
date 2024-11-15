@@ -14,9 +14,8 @@ class RequestServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(RequestService::class,function(){
-            return new RequestService(new ItemRequestService(),
-            new AddItemRequestService(), new ModifyItemRequestService(),
+        $this->app->bind(ItemRequestService::class,function(){
+            return new ItemRequestService(new AddItemRequestService(), new ModifyItemRequestService(),
             new AddRequestStatusService(), new AddMessageService(),new MessageService());
         }          
         );

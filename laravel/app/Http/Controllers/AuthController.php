@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\User;
 
-use App\Services;
+use App\Services\UserService;
 use App\Models;
+use App\Providers;
+
 //use \App\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -14,6 +16,16 @@ use Illuminate\Support\Str;
 use Request;
 
 class AuthController extends Controller {
+
+	
+	private $userLoginService;
+
+	public function __construct(UserService $userLoginService){
+		$this->userLoginService=$userLoginService;
+//		$this->statusType=$statusType;
+
+
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -27,14 +39,14 @@ class AuthController extends Controller {
 	
 	public function loginUser(Request $request){
 		$input = $request->all();
-		$request=new \stdClass();
+		$request=new stdClass();
 
 		
 		$request->username=$input["username"];
 		$request->password=$input["password"];
 
 		
-		 $auth=\App\Services\AuthService::loginUser($request);
+		 $auth=$this->userLoginService->loginUser($request);
 		
 //		 $auth=\App\Services\AuthService::login($request);
 		
@@ -66,12 +78,12 @@ class AuthController extends Controller {
 	}
 	public function retrieveUser($id){
 
-		$request=new \stdClass();
+		$request=new stdClass();
 
 		 $request->record=$id;
 		 $request->type="single";		
 		
-		 $auth=\App\Services\UserService::detailedUsers($request);
+		 $auth=$this->userLoginService->detailedUsers($request);
 		 return \Response::json($auth);
 		
 	}
@@ -87,7 +99,7 @@ class AuthController extends Controller {
 		$request->name=$input['name'];
 		$request->user_type=$input['user_type'];
 		
-		$auth=\App\Services\AddUserService::addUser($request);
+		$auth=$this->userLoginService->addUser($request);
 
 //		return \Response::json($auth,200);
 		return \Response::json($auth);
@@ -108,14 +120,14 @@ class AuthController extends Controller {
 	public function changePassword(){
 		
 		$input = Request::all();
-		$request=new \stdClass();
+		$request=new stdClass();
 
 		$request->user_id=$input['user_id'];
 		$request->password=$input['password'];
 		$request->new_password=$input['new_password'];
 
 		
-		$auth=\App\Services\AuthService::changePassword($request);
+		$auth=$this->userLoginService->changePassword($request);
 
 		return \Response::json($auth);
 		
@@ -124,7 +136,7 @@ class AuthController extends Controller {
 	public function addUserProfile($id){
 
 		$input = Request::all();
-		$request=new \stdClass();
+		$request=new stdClass();
 
 
 		$request->user_id=$id;
@@ -138,7 +150,7 @@ class AuthController extends Controller {
 
 
 		
-		$auth=\App\Services\AddUserService::addUserProfile($request);
+		$auth=$this->userLoginService->addUserProfile($request);
 		return \Response::json($auth);
 		
 		
@@ -146,7 +158,7 @@ class AuthController extends Controller {
 
 	public function addUserAddress($id){
 		$input = Request::all();
-		$request2=new \stdClass();
+		$request2=new stdClass();
 
 
 		$request2->profile_id=$id;
@@ -161,13 +173,13 @@ class AuthController extends Controller {
 
 
 		
-		$auth=\App\Services\AddUserService::addUserAddress($request2);
+		$auth=$this->userLoginService->addUserAddress($request2);
 		return \Response::json($auth);
 	}
 	public function addUserContact($id){
 
 		$input = Request::all();
-		$request2=new \stdClass();
+		$request2=new stdClass();
 
 
 		$request2->profile_id=$id;
@@ -177,7 +189,7 @@ class AuthController extends Controller {
 		$request2->email=$input['email'];
 	
 		
-		$auth=\App\Services\AddUserService::addUserContact($request2);
+		$auth=$this->userLoginService->ddUserContact($request2);
 		return \Response::json($auth);
 	}
 

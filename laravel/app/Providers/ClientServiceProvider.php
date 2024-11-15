@@ -14,8 +14,8 @@ class ClientServiceProvider extends ServiceProvider
     public function register()
     {
         //
-        $this->app->bind(ClientUserService::class,function(){
-            return new ClientUserService(new AddUserService(),
+        $this->app->bind(UserService::class,function(){
+            return new UserService(new AddUserService(),
             new ModifyUserService(), new AuthService());
         }          
         );

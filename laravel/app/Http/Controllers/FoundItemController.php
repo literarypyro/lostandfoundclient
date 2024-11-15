@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Services;
-use App\Models;
-//use App\Http;
-//use App\Http\Controllers;
-//use App\Http\Controllers;
-//use Request;
+use App\Services\ItemService;
+use App\Models\Item;
+use App\Providers;
+
 use Illuminate\Http\Request;
 
 
@@ -17,7 +15,7 @@ class FoundItemController extends Controller {
 	private $item_entry;
 
 
-	public function __construct(SearchItemService $itemService,Item $item_entry){
+	public function __construct(ItemService $itemService,Item $item_entry){
 		$this->itemService=$itemService;
 
 

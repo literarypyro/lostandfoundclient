@@ -13,9 +13,8 @@ class ItemServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(SearchItemService::class,function(){
-            return new SearchItemService(new ItemService(),
-            new DeleteItemService(), new AddItemService(),
+        $this->app->bind(ItemService::class,function(){
+            return new ItemService(new DeleteItemService(), new AddItemService(),
             new AddItemStatusService(), new ModifyItemService(),new ModifyEntryService(),
             new LocationService());
         }          
