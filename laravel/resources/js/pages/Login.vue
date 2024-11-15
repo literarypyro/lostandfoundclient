@@ -15,14 +15,12 @@ export default {
         RetrieveItem,
     },
     methods: {
-        
 
 
 
     }
 
 }
-
 
 </script>
 <style>
