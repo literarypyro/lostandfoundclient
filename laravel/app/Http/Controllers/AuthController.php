@@ -48,33 +48,14 @@ class AuthController extends Controller {
 		
 		 $auth=$this->userLoginService->loginUser($request);
 		
-//		 $auth=\App\Services\AuthService::login($request);
-		
-		
-		 if($auth["confirm"]==false){
-		 		
-				 
-		 return \Response::json($auth);
-//			return response($auth,422);
-		 }
-		 else {
-			 
-		 return \Response::json($auth);
-//			return response($auth,200); 
-			 
-		 }
-		
-		 if($auth==""){
-			return "Login failed with ".$input['username'];
-		 
-		 }
-		else if($auth==null){
-		 	return \Response::json($auth);
+		try {
+			return Inertia::render('Request',['requestid'=>$auth]);
 		}
-		else {
-			return "No response";
-		} 
-		
+		catch(Exception $e){
+			return response()->json(['error'=>$e->getMessage()],500);
+		}
+	
+
 	}
 	public function retrieveUser($id){
 
@@ -110,7 +91,7 @@ class AuthController extends Controller {
 		$token = $request->user()->token();
 		$token->revoke();
 		$response = ['message' => 'You have been successfully logged out!'];
-		return response($response, 200);		
+		return Inertia::render('Login');
 
 
 

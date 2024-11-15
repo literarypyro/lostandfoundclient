@@ -159,7 +159,7 @@ class AuthService {
 			
 		}
 		
-		return $auth;
+		return $user_id;
 	}
 	
 	

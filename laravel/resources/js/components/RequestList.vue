@@ -2,7 +2,8 @@
 <div>
     <div v-for="request in requests" :key="request.id"></div>
     <div>{{ request["category"].type }}</div>
-    <div @click="retrieveRequest(request.id)">{{ request.description }}</div>
+    <div @click="retrieveRequest(request.id)">{{ request.title }}</div>
+    <div>{{ request.description }}</div>
     <div>{{ request.request_date_label }}</div>
     <div>
         <div>Requested By: {{ request["user_info"]["name"] }}</div>

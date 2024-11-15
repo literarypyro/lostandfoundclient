@@ -50,6 +50,10 @@ Route::get('/login',
 Route::get('/register',
 ['as'=>'register-user','uses'=>'AuthController@registerUser']);
 
+Route::get('/logout',
+['as'=>'logout','uses'=>'AuthController@logoutUser']);
+
+
 Route::get('/registerAddress/{id}',
 ['as'=>'reg-user-address','uses'=>'AuthController@addUserAddress']);
 
