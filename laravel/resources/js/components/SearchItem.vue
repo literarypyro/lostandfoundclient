@@ -1,5 +1,5 @@
 <template>
-
+<div>Search Item<input type="text" /></div>
 
 
 </template>
@@ -10,7 +10,6 @@ export default {
         requestedId:String,
     },
     components: {
-        SearchItem,
         ItemList,
         RetrieveItem,
     },
