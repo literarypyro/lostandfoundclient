@@ -26,14 +26,33 @@
     
     </div>
     </template>
-    <script>
+<script>
+
+
+
+export default {
+props: {
+        requests:Array,
+        requestedId:String,
+    },
+    components: {
+        RequestList,
+        RetrieveRequest,
+    },
+    data: {
+        formStep: 1,
+
+    }
+
+
+}
+
     
     
     
     
-    
-    </script>
-    <style>
+</script>
+<style>
     
     
     

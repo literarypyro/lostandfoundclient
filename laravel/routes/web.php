@@ -15,7 +15,7 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function() {
-    return Inertia::render('Request');
+    return Inertia::render('Login');
 });
 
 Route::get('/requests/{requestId}',['as'=>'retrieve-requests','uses'=>'RequestController@retrieveRequest']);

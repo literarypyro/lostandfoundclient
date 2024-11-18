@@ -1,11 +1,11 @@
 <template>
     <div>
-        <label></label>
+        <label>Username</label>
         <input type="text" />
     </div>
     <div>
-        <label></label>
-        <input type="text" />
+        <label>Password</label>
+        <input type="password" />
     </div>
     <button @click="loginUser">Log In
     </button>
@@ -17,9 +17,7 @@ export default {
         requestedId:String,
     },
     components: {
-        SearchItem,
-        ItemList,
-        RetrieveItem,
+
     },
     methods: {
         loginUser: function(){
