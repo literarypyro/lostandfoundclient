@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Login');
+Route::get('/', function() {
+    return Inertia::render('Request');
 });
 
 Route::get('/requests/{requestId}',['as'=>'retrieve-requests','uses'=>'RequestController@retrieveRequest']);

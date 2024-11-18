@@ -14,9 +14,9 @@
 
 </template>
 <script>
-import SearchItem from '/@Components/SearchItem.vue';
-import ItemList from '/@Components/RequestList.vue';
-import RetrieveItem from '/@Components/RetrieveRequest.vue';
+import SearchItem from '@components/SearchItem.vue';
+import ItemList from '@components/RequestList.vue';
+import RetrieveItem from '@components/RetrieveRequest.vue';
 
 
 export default {

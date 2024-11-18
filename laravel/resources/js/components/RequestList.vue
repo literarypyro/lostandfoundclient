@@ -17,20 +17,20 @@ import axios from 'axios';
 
 export default {
     props: {
-        requests:Array
+        requests:Array,
         requestId:''
     },
     data(){
         return {
-            showRetrieveRequest:false;
-            requestedId:null;
+            showRetrieveRequest:false,
+            requestedId:null,
         };
     },
     methods:{
         retrieveRequest(requestId){
             showRetrieveRequest:true;
             requestedId:requestId;
-        };
+        }
 
 
     },

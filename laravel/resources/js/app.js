@@ -1,19 +1,16 @@
 //require('./bootstrap');
-import { createApp } from 'vue';
+import { createApp,h } from 'vue';
 import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/inertia';
 
 createInertiaApp({
-    resolve:name=>require('./Pages/${name}.vue'),
-    setup({ el,App,props,plugin}) {
-        createApp({ render: () => h(Apps,props) })
-        .use(plugin)
-        .mount(el);
 
-
-    },
-
-
+  resolve: (name) => require(`./pages/${name}.vue`),
+  setup({ el, App, props, plugin }) {
+    createApp({ render: () => h(App, props) })
+      .use(plugin)
+      .mount(el)
+  },
 });
 
 InertiaProgress.init();
