@@ -22,7 +22,7 @@ Route::get('/requests/{requestId}',['as'=>'retrieve-requests','uses'=>'RequestCo
 
 Route::post('/addrequest/{requestId}',['as'=>'add-request','uses'=>'RequestController@addRequest']);
 
-Route::get('/dashboard',function(){ return Inertia::render('Request'); });
+Route::get('/dashboard/{requestId}',function(){ return Inertia::render('Request'); });
 
 Route::get('/daterangesearch/{searchType}/{searchTerm}/range/{dateRange}',
 ['as'=>'date-range-search','uses'=>'FoundItemController@dateRangeSearch']);
@@ -52,7 +52,6 @@ Route::get('/register',
 
 Route::get('/logout',
 ['as'=>'logout','uses'=>'AuthController@logoutUser']);
-
 
 Route::get('/registerAddress/{id}',
 ['as'=>'reg-user-address','uses'=>'AuthController@addUserAddress']);

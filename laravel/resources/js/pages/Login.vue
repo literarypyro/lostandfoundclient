@@ -46,7 +46,7 @@ export default {
           // Use Inertia's visit method to navigate to /requests/:userId
 //          Inertia.visit(`/requests/${userId}`);
 
-            Inertia.visit(`/dashboard`);
+            Inertia.visit(`/dashboard/${userId}`);
         } else {
           console.error('User ID not found in response');
         }
