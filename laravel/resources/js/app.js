@@ -4,7 +4,6 @@ import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/inertia';
 
 
-
 createInertiaApp({
   resolve: (name) => require(`./pages/${name}.vue`),
   setup({ el, App, props, plugin }) {

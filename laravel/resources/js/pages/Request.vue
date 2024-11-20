@@ -18,6 +18,15 @@ export default {
         requests:Array,
         requestedId:String,
     },
+    data() {
+        return  {
+
+
+        }
+
+
+
+    },
     components: {
         RequestList,
         RetrieveRequest,

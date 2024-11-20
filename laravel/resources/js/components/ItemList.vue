@@ -26,7 +26,7 @@ export default {
         };
     },
     mounted() {
-        axios.get('/request/{$this.requestedId}')
+        axios.get('/items/{$this.requestedId}')
         .then(response=> {
             this.item=response.data;
         })

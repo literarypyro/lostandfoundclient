@@ -57,7 +57,8 @@ class AuthController extends Controller {
 		try {
 
 //			to_route('request-dashboard')->with('requestid',$userId);
-			redirect('/dashboard')->with('requestid',$userId);
+//			redirect('/dashboard')->with('requestid',$userId);
+			return response()->json(['userid'=>$userId]);
 
 
 		}

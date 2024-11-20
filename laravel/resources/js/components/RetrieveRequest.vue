@@ -26,15 +26,18 @@ export default {
     },
     data(){
         return {
-            item:null
+            item:null,
+            showRetrieveRequest:false,
         };
     },
     mounted() {
+        /*
         axios.get('/request/{$this.requestedId}')
         .then(response=> {
             this.item=response.data;
         })
         .catch(error=>{ console.error(error)});
+        */
     },
 
 }

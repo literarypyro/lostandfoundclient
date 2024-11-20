@@ -20,49 +20,42 @@
 
 </template>
 <script>
+import { Inertia } from '@inertiajs/inertia';
+import axios from 'axios';
 
 export default {
-    props: {
-        requests:Array,
-        requestedId:String,
-    },
-    data(){
-        return {
-             
-            username: '',
-            password:'',
-            reqId:''
+  data() {
+    return {
+      username: '',
+      password: '',
+      reqId: ''
+    };
+  },
+  methods: {
+    async loginUser() {
+      try {
+        const response = await axios.post('/login', {
+          username: this.username,
+          password: this.password,
+        });
+
+        // Assuming the response contains the user ID (e.g., response.data.userid)
+        const userId = response.data.userid;
+
+        if (userId) {
+          // Use Inertia's visit method to navigate to /requests/:userId
+//          Inertia.visit(`/requests/${userId}`);
+
+            Inertia.visit(`/dashboard`);
+        } else {
+          console.error('User ID not found in response');
         }
-    },
-    components: {
-
-    },
-    methods: {
-        loginUser(){
-            this.$inertia.post('/login',
-            {
-                username:this.username,        
-                password:this.password,
-
-            });
-            
-            /*
-            .then(response=> {
-
-
-
-
-            })
-            .catch(error=>{
-                console.error("Login failed",error);
-
-
-            });
-            */
-
-        }
-    },    
-}
+      } catch (error) {
+        console.error('Login failed:', error);
+      }
+    }
+  }
+};
 </script>
 <style>
 

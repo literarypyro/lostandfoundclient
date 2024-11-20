@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\ItemRequestService;
 use App\Models\StatusType;
+use App\Models\ItemRequest;
 use App\Providers;
 //use \App\Controllers;
 
@@ -11,12 +12,12 @@ class RequestController extends Controller {
 
 	private $requestService;
 	private $statusType;
+	private $itemRequest;
 
-
-	public function __construct(ItemRequestService $requestService,StatusType $statusType){
+	public function __construct(ItemRequestService $requestService,StatusType $statusType, ItemRequest $itemRequest){
 		$this->requestService=$requestService;
 		$this->statusType=$statusType;
-
+		$this->itemRequest=$itemRequest;
 
 	}
 
@@ -85,8 +86,8 @@ class RequestController extends Controller {
 		$item=$this->itemRequest->find($id);
 //		$item->status=\App\Services\ItemRequestService::getRequestStatus($item->id)->latest()->get()->toArray();
 		try {
-			$item->details=$this->requestService->getRequestDetails($item);
-			$item->category=$this->requestService->getCategory($item);
+			$item->details=$this->requestService->getRequestDetails($id);
+			$item->category=$this->requestService->getCategory($id);
 	
 			return response()->json($item,201);
 		}
