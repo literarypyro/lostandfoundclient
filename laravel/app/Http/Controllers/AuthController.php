@@ -9,11 +9,14 @@ use App\Models;
 use App\Providers;
 
 //use \App\Controllers;
+use Illuminate\Http\Request; 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Inertia\Inertia;
 
-use Request;
+
+//use Request;
 
 class AuthController extends Controller {
 
@@ -30,26 +33,33 @@ class AuthController extends Controller {
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @return Response
+	 * 
 	 */
 	public function index($id=null,$component=null)
 	{
 		
 	}
 	
-	public function loginUser(Request $request){
+	public function loginUser(Request $request,)  {
 		$input = $request->all();
-		$request=new stdClass();
+		$request=new \stdClass();
 
 		
 		$request->username=$input["username"];
 		$request->password=$input["password"];
 
 		
-		 $auth=$this->userLoginService->loginUser($request);
+		$auth=$this->userLoginService->loginUser($request);
 		
+		$userId=$auth['userid'];
+
+
 		try {
-			return Inertia::render('Request',['requestid'=>$auth]);
+
+//			to_route('request-dashboard')->with('requestid',$userId);
+			redirect('/dashboard')->with('requestid',$userId);
+
+
 		}
 		catch(Exception $e){
 			return response()->json(['error'=>$e->getMessage()],500);
@@ -72,7 +82,7 @@ class AuthController extends Controller {
 	public function registerUser(Request $request){
 	
 		$input = $request->all();
-		$request=new stdClass();
+		$request=new \stdClass();
 
 		$request->username=$input['username'];
 		$request->password=$input['password'];
@@ -101,7 +111,7 @@ class AuthController extends Controller {
 	public function changePassword(){
 		
 		$input = Request::all();
-		$request=new stdClass();
+		$request=new \stdClass();
 
 		$request->user_id=$input['user_id'];
 		$request->password=$input['password'];
@@ -117,7 +127,7 @@ class AuthController extends Controller {
 	public function addUserProfile($id){
 
 		$input = Request::all();
-		$request=new stdClass();
+		$request=new \stdClass();
 
 
 		$request->user_id=$id;
@@ -139,7 +149,7 @@ class AuthController extends Controller {
 
 	public function addUserAddress($id){
 		$input = Request::all();
-		$request2=new stdClass();
+		$request2=new \stdClass();
 
 
 		$request2->profile_id=$id;
@@ -160,7 +170,7 @@ class AuthController extends Controller {
 	public function addUserContact($id){
 
 		$input = Request::all();
-		$request2=new stdClass();
+		$request2=new \stdClass();
 
 
 		$request2->profile_id=$id;

@@ -1,36 +1,68 @@
 <template>
+
+    <form @submit.prevent="loginUser">
+    
+    <div>
+    
     <div>
         <label>Username</label>
-        <input type="text" />
+        <input type="text" v-model="username" name="username" />
     </div>
     <div>
         <label>Password</label>
-        <input type="password" />
+        <input type="password" v-model="password" name="password"/>
     </div>
-    <button @click="loginUser">Log In
+    <button type="submit">Log In
     </button>
+
+    </div>
+    </form>
+
 </template>
 <script>
+
 export default {
     props: {
         requests:Array,
         requestedId:String,
     },
+    data(){
+        return {
+             
+            username: '',
+            password:'',
+            reqId:''
+        }
+    },
     components: {
 
     },
     methods: {
-        loginUser: function(){
+        loginUser(){
+            this.$inertia.post('/login',
+            {
+                username:this.username,        
+                password:this.password,
+
+            });
             
+            /*
+            .then(response=> {
 
 
-        },
 
 
-    }
+            })
+            .catch(error=>{
+                console.error("Login failed",error);
 
+
+            });
+            */
+
+        }
+    },    
 }
-
 </script>
 <style>
 

@@ -39,6 +39,14 @@ class UserService {
 		
 	}
 	
+	public static function loginUser($request){
+		$authService=app(AuthService::class);
+		return $authService->loginUser($request);
+
+
+	}
+
+
 
 
 	public static function detailedUsers($request){

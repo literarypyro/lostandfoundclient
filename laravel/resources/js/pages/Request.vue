@@ -10,8 +10,8 @@
 </div>
 </template>
 <script>
-import RequestList from '@components/RequestList.vue';
 import RetrieveRequest from '@components/RetrieveRequest.vue';
+import RequestList from '@components/RequestList.vue';
 
 export default {
     props: {
