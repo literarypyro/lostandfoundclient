@@ -2,6 +2,8 @@
 <div>Requests Made</div>
 
 <button @click="createRequest">Create a Request</button>
+<button @click="goToItem">Search In Items Inventory</button>
+
 
 <div>
 <RequestList :requestId="requestId" @update:selectedRequest="updateSelectedRequest" />
@@ -45,6 +47,13 @@ export default {
 
 
         },
+        goToItem() {
+            Inertia.visit("/dashboardItem");
+
+
+        },
+
+
         updateSelectedRequest(selected){
             if(!this.showRequestedItem) { this.showRequestedItem=true; }
 

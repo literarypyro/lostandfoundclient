@@ -37,7 +37,7 @@ class ApiController extends Controller {
 	}
 	
 	public function listCategory(){
-		$item=$this->apiService->listCategory()->toArray();
+		$item=$this->apiService->listCategories()->toArray();
 		return $item;
 	}
 

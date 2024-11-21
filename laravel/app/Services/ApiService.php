@@ -16,6 +16,14 @@ class ApiService {
 
 	}
 
+	public static function listCategories(){
+		$locationService=app(CategoryService::class);
+		return $locationService->listCategory();
+
+
+	}
+
+
 	public static function generateToken($request){
 		
         $token = Str::random(60);

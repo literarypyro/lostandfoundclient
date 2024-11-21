@@ -1,6 +1,16 @@
 <template>
     <template v-if="formStep===1">
-        <div><label>Category</label><div><input type='text' /></div></div>
+        <div><label>Category</label><div>
+            <select
+      v-model="item_category"
+    >
+      <option v-for="category in categories"
+        :key="category.id"
+        :value="category.id"
+      >
+        {{ category.type }} 
+      </option>
+</select></div></div>
         <div><label>Title</label><div><input type='text' /></div></div>
         <div><label>Description</label><div><input type='text' /></div></div>
         <div><label>Date Lost</label><div><datepicker></datepicker></div></div>
@@ -13,7 +23,7 @@
         <div>
 
             <select
-      v-model="item_category"
+      v-model="item_location"
     >
       <option v-for="location in locations"
         :key="location.id"
@@ -88,6 +98,7 @@ props: {
 
             },
             locations: [],
+            categories:[],
         }    
     },
     methods: {
@@ -105,6 +116,13 @@ props: {
         .then(response=> {
             console.log(response.data);
             this.locations=response.data;
+        })
+        .catch(error=>{ console.error(error)});
+
+        axios.get('/category')
+        .then(response=> {
+            console.log(response.data);
+            this.categories=response.data;
         })
         .catch(error=>{ console.error(error)});
     },

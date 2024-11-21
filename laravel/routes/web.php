@@ -24,6 +24,7 @@ Route::get('/createRequest',function(){ return Inertia::render('CreateRequest');
 
 Route::get('/registerUser',function(){ return Inertia::render('Register'); });
 
+Route::get('/dashboardItem',function(){ return Inertia::render('Item'); });
 
 
 Route::get('/requests/{requestId}',['as'=>'retrieve-requests','uses'=>'RequestController@listRequests']);
