@@ -4,11 +4,11 @@
 <button @click="createRequest">Create a Request</button>
 
 <div>
-<RequestList :requestId="requestId" />
+<RequestList :requestId="requestId" @update:selectedRequest="updateSelectedRequest" />
 </div>
 
 <div>
-<RetrieveRequest :requestedId="requestedId" />
+<RetrieveRequest :selectedRequest="requestedId"  v-if="showRequestedItem" />
 ssss
 </div>
 
@@ -28,7 +28,7 @@ export default {
     },
     data() {
         return  {
-
+            showRequestedItem:false,
 
         }
 
@@ -44,7 +44,13 @@ export default {
             Inertia.visit("/createRequest");
 
 
-        }
+        },
+        updateSelectedRequest(selected){
+            if(!this.showRequestedItem) { this.showRequestedItem=true; }
+
+            this.requestedId=selected;
+
+        },
 
 
     }

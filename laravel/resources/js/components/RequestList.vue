@@ -13,6 +13,7 @@
           <div>Requested By: {{ request.user_info?.name }}</div>
           <div>{{ request.latest_status?.status?.type }}</div>
         </div>
+        <button @click="retrieveRequest(request.id)">Retrieve Request</button>
       </div>
     </div>
   </template>
@@ -21,19 +22,26 @@ import axios from 'axios';
 
 export default {
     props: {
-        requests:Array,
-        requestId:String
+        requests: Array,
+        requestId: String,
+        selectedRequest: String
     },
-    data(){
+    data() {
         return {
-            showRetrieveRequest:false,
-            requestedId:this.requestId,
-            localRequests:[]
+            showRetrieveRequest: false,
+            requestedId: this.requestId,
+            localRequests: [],
+            // Use data for local selection, no need to define selectedRequest here since it's already a prop
+            selectedRequestLocal: this.selectedRequest // Optionally copy the prop into local state if needed
         };
     },
-    methods:{
-
-
+    methods: {
+        // Method to update the selected request
+        retrieveRequest(selected) {
+            this.$emit('update:showRetrieveRequest',true);
+            this.selectedRequestLocal = selected; // Update local state
+            this.$emit('update:selectedRequest', selected); // Emit the updated value to the parent component if needed
+        }
     },
     mounted() {
         axios.get(`/requests/${this.requestedId}`)

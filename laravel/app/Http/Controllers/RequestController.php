@@ -81,12 +81,12 @@ class RequestController extends Controller {
 
 	
 	
-	public function retrieveRequest($id){
-		$item=$this->itemRequest->find($id);
+	public function retrieveRequest($record){
+		$item=$this->itemRequest->find($record);
 //		$item->status=\App\Services\ItemRequestService::getRequestStatus($item->id)->latest()->get()->toArray();
 		try {
-			$item->details=$this->requestService->getRequestDetails($id);
-			$item->category=$this->requestService->getCategory($id);
+			$item->details=$this->requestService->getRequestDetails($item);
+			$item->category=$this->requestService->getCategory($item);
 	
 			return response()->json($item,201);
 		}

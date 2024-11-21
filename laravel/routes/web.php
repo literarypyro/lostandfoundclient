@@ -45,6 +45,10 @@ Route::get('/daterangefound/{searchType}/{searchTerm}/range/{dateRange}',
 
 Route::get('/item/{itemId}',['as'=>'retrieve-items','uses'=>'FoundItemController@retrieveItem']);
 
+Route::get('/request/{requestid}',['as'=>'retrieve-items','uses'=>'RequestController@retrieveRequest']);
+
+
+
 Route::get('/category',
 ['as'=>'category-list','uses'=>'ApiController@listCategory']);
 

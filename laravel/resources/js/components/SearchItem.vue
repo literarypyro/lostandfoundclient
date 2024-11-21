@@ -8,6 +8,7 @@ export default {
     props: {
         requests:Array,
         requestedId:String,
+        
     },
     components: {
         ItemList,
