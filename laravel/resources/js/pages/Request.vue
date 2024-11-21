@@ -1,22 +1,30 @@
 <template>
 <div>Requests Made</div>
+
+<button @click="createRequest">Create a Request</button>
+
 <div>
-<RequestList :requests="requests" />
+<RequestList :requestId="requestId" />
 </div>
 
 <div>
 <RetrieveRequest :requestedId="requestedId" />
-
+ssss
 </div>
+
+
+
 </template>
 <script>
 import RetrieveRequest from '@components/RetrieveRequest.vue';
 import RequestList from '@components/RequestList.vue';
+import { Inertia } from '@inertiajs/inertia';
+
 
 export default {
     props: {
         requests:Array,
-        requestedId:String,
+        requestId:String,
     },
     data() {
         return  {
@@ -30,7 +38,19 @@ export default {
     components: {
         RequestList,
         RetrieveRequest,
+    },
+    methods: {
+        createRequest() {
+            Inertia.visit("/createRequest");
+
+
+        }
+
+
     }
+
+
+
 }
 
 

@@ -40,11 +40,21 @@ class ApiController extends Controller {
 		$item=$this->apiService->listCategory()->toArray();
 		return $item;
 	}
+
+	public function listLocations(){
+		$item=$this->apiService->listLocations()->toArray();
+		return $item;
+	}
+
+
 	public function listCountry(){
 		$item=$this->apiService->listCountry()->toArray();
 		return $item;
 	}
 	
+
+
+
 	
 	public function listFoundations(){
 

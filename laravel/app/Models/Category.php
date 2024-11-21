@@ -22,7 +22,7 @@ class Category extends Eloquent {
 	{
 
 		return Attribute::make(
-			get: fn()=>$this->hasMany(ItemRequests::class,'log_id'),
+			get: fn()=>$this->hasMany(ItemRequests::class,'category_id'),
 	
 		);
 		

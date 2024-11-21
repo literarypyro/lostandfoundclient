@@ -6,6 +6,7 @@ use App\Services\ItemRequestService;
 use App\Models\StatusType;
 use App\Models\ItemRequest;
 use App\Providers;
+use Inertia\Inertia;
 //use \App\Controllers;
 
 class RequestController extends Controller {
@@ -34,7 +35,7 @@ class RequestController extends Controller {
 	}
 	public function search($search_type,$search_term=null)
 	{
-		$request=new stdClass();
+		$request=new \stdClass();
 		$request->record=$search_term;
 		$request->type=$search_type;
 	//	$item=\App\Services\ItemRequestService::listRequest($request)->toArray();
@@ -44,9 +45,7 @@ class RequestController extends Controller {
 
 			$item=$this->requestService->detailedItemRequests($request)->toArray();
 
-			return Inertia::render('Request',[
-				'requests'=>$item
-			]);
+			return response()->json($item);
 
 
 		}
@@ -74,9 +73,9 @@ class RequestController extends Controller {
 	}
 
 	public function listRequests($record){
-		$request=new stdClass();
+		$request=new \stdClass();
 
-		$this->search("userRequests",$record);
+		return $this->search("userRequests",$record);
 
 	}
 

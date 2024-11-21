@@ -5,10 +5,17 @@ namespace App\Services;
 use App\Models;
 use App\Services\UserService;
 use App\Services\ItemRequestService;
-
+use App\Services\LocationService;
 
 class ApiService {
 	
+	public static function listLocations(){
+		$locationService=app(LocationService::class);
+		return $locationService->listLocations();
+
+
+	}
+
 	public static function generateToken($request){
 		
         $token = Str::random(60);

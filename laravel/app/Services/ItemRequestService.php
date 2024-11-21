@@ -34,7 +34,7 @@ class ItemRequestService {
 				//$user=
 //				return 
 				
-				$items=\App\Models\User::with("ItemRequests")->find($record)->itemRequests()->get();
+				$items=\App\Models\LoginUser::with("ItemRequests")->find($record)->itemRequests()->get();
 				
 				
 				

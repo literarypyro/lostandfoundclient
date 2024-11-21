@@ -1,4 +1,5 @@
 <template>
+<button @click="registerAccount">Click here to Sign Up</button>
 
     <form @submit.prevent="loginUser">
     
@@ -32,6 +33,13 @@ export default {
     };
   },
   methods: {
+
+      registerAccount() {
+            Inertia.visit("/registerUser");
+
+
+        },
+
     async loginUser() {
       try {
         const response = await axios.post('/login', {
@@ -46,7 +54,7 @@ export default {
           // Use Inertia's visit method to navigate to /requests/:userId
 //          Inertia.visit(`/requests/${userId}`);
 
-            Inertia.visit(`/dashboard/${userId}`);
+            Inertia.visit(`/dashboard/${userId}`,['requestId',userId]);
         } else {
           console.error('User ID not found in response');
         }

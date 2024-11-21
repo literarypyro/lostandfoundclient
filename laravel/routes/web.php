@@ -18,11 +18,18 @@ Route::get('/', function() {
     return Inertia::render('Login');
 });
 
-Route::get('/requests/{requestId}',['as'=>'retrieve-requests','uses'=>'RequestController@retrieveRequest']);
+Route::get('/dashboard/{requestId}',function($requestId){ return Inertia::render('Request',['requestId'=>$requestId]); });
+
+Route::get('/createRequest',function(){ return Inertia::render('CreateRequest'); });
+
+Route::get('/registerUser',function(){ return Inertia::render('Register'); });
+
+
+
+Route::get('/requests/{requestId}',['as'=>'retrieve-requests','uses'=>'RequestController@listRequests']);
 
 Route::post('/addrequest/{requestId}',['as'=>'add-request','uses'=>'RequestController@addRequest']);
 
-Route::get('/dashboard/{requestId}',function(){ return Inertia::render('Request'); });
 
 Route::get('/daterangesearch/{searchType}/{searchTerm}/range/{dateRange}',
 ['as'=>'date-range-search','uses'=>'FoundItemController@dateRangeSearch']);
@@ -43,6 +50,9 @@ Route::get('/category',
 
 Route::get('/itemType/list',
 ['as'=>'item-type-list','uses'=>'ApiController@listItemType']);
+
+Route::get('/locations',
+['as'=>'locations-list','uses'=>'ApiController@listLocations']);
 
 Route::post('/login',
 ['as'=>'login-user','uses'=>'AuthController@loginUser']);

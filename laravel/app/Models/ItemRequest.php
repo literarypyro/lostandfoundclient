@@ -10,40 +10,30 @@ class ItemRequest extends Eloquent {
 	public function itemClaim(){
 
 
-		return Attribute::make(
-			get: fn()=>$this->hasOne(Claim::class,'log_id'),
+		return $this->hasOne(Claim::class,'log_id');
 
-		);
 	}	
 
 	public function requestDetail(){
-		return Attribute::make(
-			get: fn()=>$this->hasOne(RequestDetail::class,'request_id'),
+		return $this->hasOne(RequestDetail::class,'request_id');
 
-		);
 	}	
 
 	public function requestStatus(){
-		return Attribute::make(
-			get: fn()=>$this->hasMany(RequestStatus::class,'request_id'),
+		return $this->hasMany(RequestStatus::class,'request_id');
 
-		);
 	}	
 
 	public function category(){
-		return Attribute::make(
-			get: fn()=>$this->belongsTo(Category::class,'category_id'),
+		return $this->belongsTo(Category::class,'category_id');
 
-		);
 
 
 	}	
 
 	public function user(){
-		return Attribute::make(
-			get: fn()=>$this->belongsTo(LoginUser::class,'user_id'),
+		return $this->belongsTo(LoginUser::class,'user_id');
 
-		);
 	}	
 	
 }

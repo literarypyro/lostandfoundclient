@@ -14,7 +14,7 @@ class ApiServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(ApiService::class,function(){
-            return new ApiService(new CategoryService(),
+            return new ApiService(new LocationService(),new CategoryService(),
             new FoundationService(), new ReceiverService(),
             );
         }          
