@@ -2,17 +2,17 @@
     <div>
       <!-- SearchItem component -->
       <div>
-        <SearchItem />
+        <SearchItem @update:searchFromItems="proceedSearch"  />
       </div>
   
       <!-- ItemList component with props -->
       <div>
-        <ItemList />
+        <ItemList :selectedSearchObject="searchObject" v-if="enableItemSearch"  />
       </div>
   
       <!-- RetrieveItem component -->
       <div>
-        <RetrieveItem />
+        <RetrieveItem v-if="getItem" />
       </div>
     </div>
   </template>
@@ -27,11 +27,44 @@
       requests: Array,
       requestedId: String,
     },
+    data(){
+      return {
+        enableItemSearch:false,
+        getItem:false,
+        searchObject:{
+          dateLost:"",
+          searchClass:"",
+          searchWord:""
+
+        },
+
+      }
+
+    },  
     components: {
       SearchItem,
       ItemList,
       RetrieveItem,
     },
+    methods:{
+        proceedSearch(selected){
+           if(!this.enableItemSearch) 
+           { this.enableItemSearch=true; 
+            console.log('enableItemSearch set to:', this.enableItemSearch);
+
+
+
+           }
+
+            this.getItem=false;
+            this.searchObject=selected;
+            console.log(selected);
+
+        }
+
+
+
+    }
   };
   </script>
   

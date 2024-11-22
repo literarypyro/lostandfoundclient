@@ -36,7 +36,7 @@ class FoundItemController extends Controller {
 	}
 	public function search($search_type,$search_term=null,$daterange=null)
 	{
-		$request=new stdClass();
+		$request=new \stdClass();
 		$request->record=$search_term;
 		$request->type=$search_type;
 
@@ -63,7 +63,7 @@ class FoundItemController extends Controller {
 		}
 		try{	
 			$item=$this->itemService->listItems($request)->toArray();
-			return response()->json($item,201);
+			return $item;
 		}
 		catch(Exception $e){
 			return response()->json(['error'=>$e->getMessage()],500);
