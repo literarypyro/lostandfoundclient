@@ -1,16 +1,13 @@
 <template>
     <div>
-      <!-- SearchItem component -->
       <div>
         <SearchItem @update:searchFromItems="proceedSearch"  />
       </div>
   
-      <!-- ItemList component with props -->
       <div>
         <ItemList :selectedSearchObject="searchObject" v-if="enableItemSearch"  />
       </div>
   
-      <!-- RetrieveItem component -->
       <div>
         <RetrieveItem v-if="getItem" />
       </div>
