@@ -141,7 +141,7 @@ class RequestController extends Controller {
 		}	
 
 		$request->description=$input["description"];
-
+		$request->title=$input['title'];
 		
 
 		$request->shape=$this->fillVoid($input['shape']);
@@ -150,6 +150,7 @@ class RequestController extends Controller {
 		$request->length=$this->fillVoid($input['length']);
 		$request->width=$this->fillVoid($input['width']);
 		$request->other_details=$this->fillVoid($input['other_details']);
+		$request->picture=$this->fillVoid($input['picture']);
 		
 		$key=$this->requestService->addItemRequest($request);
 
