@@ -6,6 +6,9 @@
     <div>ID: {{ item?.id }}</div>
     <div>Category: {{ item?.category?.type }}</div>
     <div>Item Type:{{ item?.itemType?.name }}</div>
+
+    <button @click="retrieveItem(item.id)">Retrieve Request</button>
+
 </div>
 </div>
 
@@ -39,6 +42,13 @@ export default {
             itemType:"",
             errorMessage: ""  // For handling errors
         };
+    },
+    methods: {
+        retrieveItem(selected){
+            this.$emit('update:selectedItem', selected); // Emit the updated value to the parent component if needed
+
+        }
+
     },
     watch: {
         selectedSearchObject(newItemObj,oldItemObj){

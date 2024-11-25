@@ -5,11 +5,11 @@
       </div>
   
       <div>
-        <ItemList :selectedSearchObject="searchObject" v-if="enableItemSearch"  />
+        <ItemList :selectedSearchObject="searchObject" v-if="enableItemSearch" @update:selectedItem="retrieveSelectedItem" />
       </div>
   
       <div>
-        <RetrieveItem v-if="getItem" />
+        <RetrieveItem :selectedItem="itemID" v-if="getItem" />
       </div>
     </div>
   </template>
@@ -31,7 +31,8 @@
         searchObject:{
           dateLost:"",
           searchClass:"",
-          searchWord:""
+          searchWord:"",
+          itemID:""
 
         },
 
@@ -57,8 +58,14 @@
             this.searchObject=selected;
             console.log(selected);
 
-        }
+        },
+        retrieveSelectedItem(selected){
 
+            if(!this.getItem) { this.getItem=true; } else { this.getItem=false; this.getItem=true; }
+
+            this.itemID=selected;
+
+        },
 
 
     }

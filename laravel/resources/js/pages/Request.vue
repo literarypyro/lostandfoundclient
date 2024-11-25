@@ -55,6 +55,7 @@ export default {
 
 
         updateSelectedRequest(selected){
+            this.requestedId="";
             if(!this.showRequestedItem) { this.showRequestedItem=true; }
 
             this.requestedId=selected;

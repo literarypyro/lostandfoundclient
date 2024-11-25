@@ -17,6 +17,7 @@ class FoundItemController extends Controller {
 
 	public function __construct(ItemService $itemService,Item $item_entry){
 		$this->itemService=$itemService;
+		$this->item_entry=$item_entry;
 
 
 	}
