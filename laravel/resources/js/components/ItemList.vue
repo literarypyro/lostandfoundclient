@@ -1,13 +1,15 @@
 <template>
-<div>sssfdfgdfg
-    <div v-for="item in items" :key="item.id"></div>
-    <div>{{ item.id }}</div>
-    <div @click="retrieveRequest(item.id)">{{ item.category.type }}</div>
-    <div>{{ item.description }}</div>
+<div>
+    <div>{{ retrievedItems?.length }} Length</div>
+
+    <div v-for="item in retrievedItems" :key="item?.id">
+    <div>ID: {{ item?.id }}</div>
+    <div>Category: {{ item?.category?.type }}</div>
+    <div>Item Type:{{ item?.itemType?.name }}</div>
+</div>
 </div>
 
 
-asdasdasd
 </template>
 <script>
 
@@ -17,12 +19,15 @@ export default {
     props: {
         requestid: String,
         selectedSearchObject: Object,
-
+        items:Array,
     },
     data() {
         return {
-            item:"",
-            items: {},  // Initialize items array
+            item:{
+                category: { type:"" },
+                itemType: { name:"" }
+            },
+            retrievedItems:[],
             url: "",
             searchDay: "",
             searchClass:"",
@@ -53,22 +58,33 @@ export default {
                 axios.get(`/daterangesearch/daily/${term}/range/${searchDay}`)
                 .then(response => {
                     console.log(response.data);
-                    this.items = response.data; // Store the response in the items array
+                    this.listeditems = response.data; // Store the response in the items array
+                    this.retrievedItems=response.data || [];
+                
+                
                 })
                 .catch(error => {
                     console.error(error);
                     this.errorMessage = 'There was an issue with the search. Please try again later.';
+                
+                    this.retrievedItems=[];
+
                 });
             } 
             else {
                 axios.get(`/categorysearch/daily/${term}/range/${searchDay}`)
                 .then(response => {
                     console.log(response.data);
-                    this.items = response.data; // Store the response in the items array
+                    this.listeditems = response.data; // Store the response in the items array
+                    this.retrievedItems=response.data[0].items || [];
+
+
                 })
                 .catch(error => {
                     console.error(error);
                     this.errorMessage = 'There was an issue with the search. Please try again later.';
+                    this.retrievedItems=[];
+
                 });
             
             }
@@ -87,21 +103,30 @@ export default {
                     axios.get(`/daterangesearch/daily/${objectTerm}/range/${searchDay}`)
                         .then(response => {
                             console.log(response.data);
-                            this.items = response.data; // Store the response in the items array
+                            this.listeditems = response.data; // Store the response in the items array
+                            this.retrievedItems=response.data || [];
+
                         })
                         .catch(error => {
                             console.error(error);
                             this.errorMessage = 'There was an issue with the search. Please try again later.';
+                            this.retrievedItems=[];
+
+
                         });
                 } else {
                     axios.get(`/categorysearch/daily/${objectTerm}/range/${searchDay}`)
                         .then(response => {
-                            console.log(response.data);
-                            this.items = response.data; // Store the response in the items array
+                            console.log(response.data.items);
+                            this.listeditems = response.data; // Store the response in the items array
+                            this.retrievedItems=response.data[0].items || [];
+
                         })
                         .catch(error => {
                             console.error(error);
                             this.errorMessage = 'There was an issue with the search. Please try again later.';
+                            this.retrievedItems=[];
+
                         });
                 }
 

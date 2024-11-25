@@ -11,10 +11,7 @@ class Item extends Eloquent {
 //		return $this->hasMany("\App\Models\Items","log_id")->whereRaw("log_type in ('cash','shortage','deposit') and transaction_type not in ('catransfer')");
 
 
-		return Attribute::make(
-			get: fn()=>$this->hasOne(ItemDetail::class,'item_id'),
-
-		);	
+		return $this->hasOne(ItemDetail::class,'item_id');	
 	
 	
 	
@@ -22,10 +19,7 @@ class Item extends Eloquent {
 
 	public function identification(){
 
-		return Attribute::make(
-			get: fn()=>$this->hasOne(Identification::class,'item_id'),
-
-		);	
+		return $this->hasOne(Identification::class,'item_id');	
 
 
 
@@ -33,18 +27,12 @@ class Item extends Eloquent {
 	
 	public function itemStatus(){
 
-		return Attribute::make(
-			get: fn()=>$this->hasOne(ItemStatus::class,'item_id'),
-
-		);	
+		return $this->hasOne(ItemStatus::class,'item_id');	
 
 
 	}
 	public function itemType(){
-		return Attribute::make(
-			get: fn()=>$this->belongsTo(ItemType::class,'item_type_id'),
-
-		);	
+		return $this->belongsTo(ItemType::class,'item_type_id');	
 
 
 	}
@@ -52,19 +40,13 @@ class Item extends Eloquent {
 	
 	public function category(){
 
-		return Attribute::make(
-			get: fn()=>$this->belongsTo(Category::class,'category_id'),
-
-		);	
+		return $this->belongsTo(Category::class,'category_id');	
 
 
 	}
 	
 	public function foundRecord(){
-		return Attribute::make(
-			get: fn()=>$this->belongsTo(FoundRecord::class,'found_record_id'),
-
-		);	
+		return $this->belongsTo(FoundRecord::class,'found_record_id');	
 
 	}
 	

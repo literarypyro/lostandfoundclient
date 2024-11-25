@@ -21,7 +21,7 @@
   
   export default {
     props: {
-      requests: Array,
+      items: Array,
       requestedId: String,
     },
     data(){
