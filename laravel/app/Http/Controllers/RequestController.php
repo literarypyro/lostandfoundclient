@@ -153,6 +153,8 @@ class RequestController extends Controller {
 
 		$request->shape=$this->fillVoid($input['shape']);
 		$request->category=$this->fillVoid($input['item_category']);
+		$request->location=$this->fillVoid($input['item_location']);
+
 		$request->color=$this->fillVoid($input['color']);
 		$request->length=$this->fillVoid($input['length']);
 		$request->width=$this->fillVoid($input['width']);

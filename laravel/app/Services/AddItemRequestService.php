@@ -51,10 +51,12 @@ class AddItemRequestService {
 		$item_request->user_id=$request->user_id;
 		$item_request->status_id=1;
 		$item_request->category_id=$request->category;
+
+		$item_request->location_id=$request->location;
 		$item_request->description=$request->description;
 		$item_request->request_date=$request->request_date;
 		$item_request->title=$request->title;
-		
+
 		$item_request->save();
 		
 		return $item_request->id;
