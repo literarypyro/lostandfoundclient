@@ -43,7 +43,8 @@ export default {
     },
     methods: {
         createRequest() {
-            Inertia.visit("/createRequest");
+            console.log(this.requestId);
+            Inertia.visit(`/createRequest/${this.requestId}`,['userID',this.requestId]);
 
 
         },
@@ -52,8 +53,6 @@ export default {
 
 
         },
-
-
         updateSelectedRequest(selected){
             this.requestedId="";
             if(!this.showRequestedItem) { this.showRequestedItem=true; }

@@ -8,6 +8,7 @@ use App\Models\ItemRequest;
 use App\Providers;
 use Inertia\Inertia;
 //use \App\Controllers;
+use Illuminate\Http\Request;
 
 class RequestController extends Controller {
 
@@ -55,6 +56,10 @@ class RequestController extends Controller {
 
 
 	}
+
+
+
+
 
 	public function listMessages($id){
 		$request=new stdClass();
@@ -126,18 +131,20 @@ class RequestController extends Controller {
 		
 		$input = $request->all();
 
-		$request=new stdClass();
+		$request=new \stdClass();
 
-		$request->user_id=$input['user_id'];
+//		$request->user_id=$input['requestId'];
+		$request->user_id=$id;
+
 
 		$request->status=1;
 
-		if($input["request_date"]==""){
+		if($input["datelost"]==""){
 			$request->request_date=date("Y-m-d");
 
 		}
 		else {
-			$request->request_date=date("Y-m-d",strtotime($input["request_date"]));
+			$request->request_date=date("Y-m-d",strtotime($input["datelost"]));
 		}	
 
 		$request->description=$input["description"];
@@ -145,11 +152,11 @@ class RequestController extends Controller {
 		
 
 		$request->shape=$this->fillVoid($input['shape']);
-		$request->category=$this->fillVoid($input['category']);
+		$request->category=$this->fillVoid($input['item_category']);
 		$request->color=$this->fillVoid($input['color']);
 		$request->length=$this->fillVoid($input['length']);
 		$request->width=$this->fillVoid($input['width']);
-		$request->other_details=$this->fillVoid($input['other_details']);
+		$request->other_details=$this->fillVoid($input['otherdetails']);
 		$request->picture=$this->fillVoid($input['picture']);
 		
 		$key=$this->requestService->addItemRequest($request);

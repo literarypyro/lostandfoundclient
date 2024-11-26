@@ -20,7 +20,7 @@ Route::get('/', function() {
 
 Route::get('/dashboard/{requestId}',function($requestId){ return Inertia::render('Request',['requestId'=>$requestId]); });
 
-Route::get('/createRequest',function(){ return Inertia::render('CreateRequest'); });
+Route::get('/createRequest/{userID}',function($userID){ return Inertia::render('CreateRequest',['user'=>$userID]); });
 
 Route::get('/registerUser',function(){ return Inertia::render('Register'); });
 

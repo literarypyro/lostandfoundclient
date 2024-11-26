@@ -53,6 +53,7 @@ class AddItemRequestService {
 		$item_request->category_id=$request->category;
 		$item_request->description=$request->description;
 		$item_request->request_date=$request->request_date;
+		$item_request->title=$request->title;
 		
 		$item_request->save();
 		

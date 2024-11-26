@@ -174,7 +174,26 @@ class ItemRequestService {
 		}
 		return $itemRequests;
 	}
+	public static function addItemRequest($request){
+		$itemRequestService=app(AddItemRequestService::class);
+		return $itemRequestService->addItemRequest($request);
 
+
+	}
+
+	public static function addRequestDetails($request){
+		$itemRequestService=app(AddItemRequestService::class);
+		return $itemRequestService->addRequestDetails($request);
+
+
+	}
+
+	public static function addRequestStatus($request){
+		$itemRequestService=app(AddRequestStatusService::class);
+		return $itemRequestService->addRequestStatus($request);
+
+
+	}
 
 	public static function getCategory($request){
 
