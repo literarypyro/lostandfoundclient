@@ -45,7 +45,12 @@ class UserService {
 
 
 	}
+	public static function verifyUser($request){
+		$authService=app(AuthService::class);
+		return $authService->verifyUser($request);
 
+
+	}
 
 
 

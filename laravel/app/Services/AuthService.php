@@ -16,6 +16,23 @@ use Illuminate\Support\Str;
 
 class AuthService {
 
+	public function verifyUser(Request $request){
+		$input=$request->all();
+		$user=\App\Models\User::whereRaw("username='$username'");
+		
+
+		if($user){
+			$auth["verification"]=false;
+
+
+		}
+		else {
+			$auth["verification"]=true;
+
+		}
+		return $auth;
+	}
+
 
 	public function login (Request $request) {
 		$validator = Validator::make($request->all(), [
