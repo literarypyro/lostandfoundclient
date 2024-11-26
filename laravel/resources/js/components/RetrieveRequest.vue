@@ -20,7 +20,7 @@ this is here
 </template>
 <script>
 import axios from 'axios';
-import { ref, watch } from 'vue'
+import {  ref, watch } from 'vue'
 
 const retrievedRequest=null;
 export default {
@@ -32,7 +32,7 @@ export default {
         return {
             item:null,
             showRetrieveRequest:false,
-            request:"",
+            request:{},
         };
     },
     watch: {

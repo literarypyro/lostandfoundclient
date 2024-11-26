@@ -54,8 +54,8 @@ export default {
 
         },
         updateSelectedRequest(selected){
-            this.requestedId="";
-            if(!this.showRequestedItem) { this.showRequestedItem=true; }
+//            this.requestedId="";
+            if(!this.showRequestedItem) { this.showRequestedItem=true; } else { this.showRequestedItem=false; this.showRequestedItem=true; }
 
             this.requestedId=selected;
 
