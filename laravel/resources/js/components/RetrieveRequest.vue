@@ -4,11 +4,11 @@ this is here
 <div>Request Here</div>
 <div></div>
 <div></div>
-<div>{{ request.details.shape }}</div>
-<div>{{ request.details.color }}</div>
-<div>{{ request.details.length }}</div>
-<div>{{ request.details.width }}</div>
-<div>{{ request.details.other_details }}</div>
+<div>{{ request?.details?.shape }}</div>
+<div>{{ request?.details?.color }}</div>
+<div>{{ request?.details?.length }}</div>
+<div>{{ request?.details?.width }}</div>
+<div>{{ request?.details?.other_details }}</div>
 
 
 
