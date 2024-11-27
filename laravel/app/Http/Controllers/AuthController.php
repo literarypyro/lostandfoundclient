@@ -89,8 +89,10 @@ class AuthController extends Controller {
 		$request->password=$input['password'];
 
 		$request->name=$input['name'];
-		$request->user_type=$input['user_type'];
-		
+//		$request->user_type=$input['user_type'];
+
+		$request->user_type="user";
+
 		$auth=$this->userLoginService->addUser($request);
 
 //		return \Response::json($auth,200);
@@ -157,11 +159,12 @@ class AuthController extends Controller {
 		
 		$request2->unit=$input['unit'];
 		$request2->street=$input['street'];
-		$request2->subdivision=$input['subdivision'];
+//		$request2->subdivision=$input['subdivision'];
+		$request2->subdivision="";
 		$request2->city=$input['city'];
 		$request2->province=$input['province'];
-		$request2->country_id=$input['country_id'];
-		$request2->zip_code=$input['zip_code'];
+		$request2->country_id=$input['country'];
+		$request2->zip_code=$input['zip'];
 
 
 		

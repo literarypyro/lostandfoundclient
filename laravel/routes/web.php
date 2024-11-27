@@ -59,20 +59,24 @@ Route::get('/itemType/list',
 Route::get('/locations',
 ['as'=>'locations-list','uses'=>'ApiController@listLocations']);
 
+Route::get('/countries',
+['as'=>'country-list','uses'=>'ApiController@listCountry']);
+
+
 Route::post('/login',
 ['as'=>'login-user','uses'=>'AuthController@loginUser']);
 
-Route::get('/register',
+Route::post('/newuser',
 ['as'=>'register-user','uses'=>'AuthController@registerUser']);
 
 Route::get('/logout',
 ['as'=>'logout','uses'=>'AuthController@logoutUser']);
 
-Route::get('/registerAddress/{id}',
+Route::post('/registerAddress/{id}',
 ['as'=>'reg-user-address','uses'=>'AuthController@addUserAddress']);
 
-Route::get('/registerProfile/{id}',
+Route::post('/registerProfile/{id}',
 ['as'=>'reg-user-profile','uses'=>'AuthController@addUserProfile']);
 
-Route::get('/registerContact/{id}',
+Route::post('/registerContact/{id}',
 ['as'=>'reg-user-contact','uses'=>'AuthController@addUserContact']);

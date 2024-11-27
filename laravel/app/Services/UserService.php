@@ -103,6 +103,15 @@ class UserService {
 		*/
 		return $users;
 	}
+
+	public static function addUser($request){
+		$userService=app(AddUserService::class);
+		return $userService->addUser($request);
+
+
+	}	
+
+
 	
 	public static function getUserProfile($request){
 

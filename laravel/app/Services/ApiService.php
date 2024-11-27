@@ -22,7 +22,12 @@ class ApiService {
 
 
 	}
+	public static function listCountry(){
+		$locationService=app(CategoryService::class);
+		return $locationService->listCountry();
 
+
+	}
 
 	public static function generateToken($request){
 		
