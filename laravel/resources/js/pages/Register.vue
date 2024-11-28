@@ -30,7 +30,7 @@
             <select v-model="status" id="status" >
                 <option value="S">Single</option>
                 <option value="M">Married</option>
-                <option value="A">Annuled</option>
+                <option value="A">Annulled</option>
                 <option value="SE">Separated</option>
                 <option value="CL">Common Law/Live In</option>
                 <option value="W">Widow</option>

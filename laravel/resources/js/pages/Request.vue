@@ -3,7 +3,7 @@
 
 <button @click="createRequest">Create a Request</button>
 <button @click="goToItem">Search In Items Inventory</button>
-
+<div class="grid-cols-2">
 
 <div>
 <RequestList :requestId="requestId" @update:selectedRequest="updateSelectedRequest" />
@@ -15,7 +15,7 @@ ssss
 </div>
 
 
-
+</div>
 </template>
 <script>
 import RetrieveRequest from '@components/RetrieveRequest.vue';

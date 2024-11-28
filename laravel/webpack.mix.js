@@ -12,12 +12,11 @@ const mix = require('laravel-mix');
  */
 const path=require("path");
 
-mix.js('resources/js/app.js', 'public/js').vue()
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
-
-
+mix.js('resources/js/app.js', 'public/js').vue();
+mix.postCss('resources/css/app.css', 'public/css', [
+    require('tailwindcss'),
+    require('autoprefixer'),
+]);
 mix.alias({
     '@components': path.resolve(__dirname,'resources/js/components'),
 

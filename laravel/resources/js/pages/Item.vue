@@ -1,17 +1,33 @@
 <template>
-    <div>
-      <div>
+    <section class="bg-white w-full max-w-screen-xl">
+	<div class="py-4 px-2 mx-auto max-w-screen-xl sm:py-4 lg:px-6 w-full">
+			<div class="col-span-2 sm:col-span-2 md:col-span-2 bg-stone-50 w-full">
         <SearchItem @update:searchFromItems="proceedSearch"  />
-      </div>
-  
-      <div>
-        <ItemList :selectedSearchObject="searchObject" v-if="enableItemSearch" @update:selectedItem="retrieveSelectedItem" />
-      </div>
-  
-      <div>
-        <RetrieveItem :selectedItem="itemID" v-if="getItem" />
-      </div>
+			</div>
+
+
+
+
+	</div>
+  <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-5 gap-4 w-full">
+
+  <div class="grid gap-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-1">
+          <ItemList :selectedSearchObject="searchObject" v-if="enableItemSearch" @update:selectedItem="retrieveSelectedItem" />
+				</div>
+        <div class="col-span-2 sm:col-span-1 md:col-span-1 bg-sky-50 h-auto md:h-full flex flex-col">
+       <RetrieveItem :selectedItem="itemID" v-if="getItem" />
+			</div>
     </div>
+
+</section>
+
+
+
+
+
+
+
+
   </template>
   
   <script>
