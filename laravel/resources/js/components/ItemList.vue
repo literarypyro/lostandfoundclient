@@ -4,11 +4,12 @@
 
     <div v-for="item in retrievedItems" :key="item?.id">
     <div>ID: {{ item?.id }}</div>
+    <div><img :src="getImagePath(item?.details?.picture)" alt="Image Item" /></div>
+    
     <div>Category: {{ item?.category?.type }}</div>
     <div>Item Type:{{ item?.itemType?.name }}</div>
 
     <button @click="retrieveItem(item.id)">Retrieve Request</button>
-
 </div>
 </div>
 
@@ -44,6 +45,15 @@ export default {
         };
     },
     methods: {
+        getImagePath(selected) {
+            if (selected) {
+//                return require(`@images/${selected}`);
+
+                  return `images/${selected}`;  
+
+            }
+            return ''; // Fallback if no picture
+        },        
         retrieveItem(selected){
             this.$emit('update:selectedItem', selected); // Emit the updated value to the parent component if needed
 
