@@ -1,21 +1,23 @@
 <template>
+<section>
 <div >
 <div></div>
 <div class='animate-fade-in-right items-center'><img :src="getImagePath(item?.details?.picture)"  alt="Image Item" /></div>
 <div class="font-bold text-center">{{  item?.title }}</div>
 <div class="font-bold  text-center">{{  item?.description }}</div>
+<div class='ml-4'>
 <div>{{ item?.details?.shape }}</div>
 <div>{{ item?.details?.color }}</div>
 <div>{{ item?.details?.length }}</div>
 <div>{{ item?.details?.width }}</div>
 <div>{{ item?.details?.other_details }}</div>
 
-
+</div>
 
 <div></div>
 
 </div>
-
+</section>
 </template>
 <script>
 import axios from 'axios';

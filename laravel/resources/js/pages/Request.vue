@@ -1,21 +1,23 @@
 <template>
+     <section class="bg-white w-full max-w-screen-xl">
+   
 <div>Requests Made</div>
 
 <button @click="createRequest">Create a Request</button>
 <button @click="goToItem">Search In Items Inventory</button>
-<div class="grid-cols-2">
+<div class="grid-cols-2 w-full inline-flex flex-row flex-wrap">
 
-<div>
+<div class="w-2/3">
 <RequestList :requestId="requestId" @update:selectedRequest="updateSelectedRequest" />
 </div>
 
-<div>
+<div class="w-1/3">
 <RetrieveRequest :selectedRequest="requestedId"  v-if="showRequestedItem" />
-ssss
 </div>
 
 
 </div>
+</section>
 </template>
 <script>
 import RetrieveRequest from '@components/RetrieveRequest.vue';

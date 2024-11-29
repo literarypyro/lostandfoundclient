@@ -1,22 +1,27 @@
 <template >
-this is here
-<div >
-<div>Request Here</div>
-<div></div>
-<div></div>
-<div>{{ request?.details?.shape }}</div>
-<div>{{ request?.details?.color }}</div>
-<div>{{ request?.details?.length }}</div>
-<div>{{ request?.details?.width }}</div>
-<div>{{ request?.details?.other_details }}</div>
+<section>
+<div class='w-full items-center mt-5'>
+    
+    
+    
+    <img :src="getImagePath(item?.details?.picture)"  alt="Image Item" v-if="request?.details?.picture"/>
+<div class="font-bold text-center">{{  request?.title }}</div>
+<div class="font-bold  text-center">{{  request?.description }}</div>
+<div class='ml-8 mt-3 p-3'>
 
+<div v-if="request?.details?.shape && request?.details?.shape!='N/A'">SHAPE: {{ request?.details?.shape }}</div>
+<div v-if="request?.details?.color && request?.details?.color!='N/A'">COLOR: {{ request?.details?.color }}</div>
+<div v-if="request?.details?.length && request?.details?.length!='N/A'">LENGTH: {{ request?.details?.length }}</div>
+<div v-if="request?.details?.width && request?.details?.width!='N/A'">WIDTH: {{ request?.details?.width }}</div>
+<div v-if="request?.details?.other_details && request?.details?.other_details!='N/A'">OTHER DETAILS: {{ request?.details?.other_details }}</div>
+</div>
 
 
 <div></div>
 
 </div>
 
-
+</section>
 </template>
 <script>
 import axios from 'axios';
