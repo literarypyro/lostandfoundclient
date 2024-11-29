@@ -1,8 +1,9 @@
 <template>
 <div >
-<div>Item Here</div>
 <div></div>
-<div></div>
+<div class='animate-fade-in-right items-center'><img :src="getImagePath(item?.details?.picture)"  alt="Image Item" /></div>
+<div class="font-bold text-center">{{  item?.title }}</div>
+<div class="font-bold  text-center">{{  item?.description }}</div>
 <div>{{ item?.details?.shape }}</div>
 <div>{{ item?.details?.color }}</div>
 <div>{{ item?.details?.length }}</div>
@@ -33,6 +34,19 @@ export default {
             showRetrieveRequest:false,
             request:"",
         };
+    },
+    methods: {
+        getImagePath(selected) {
+            if (selected) {
+//                return require(`@images/${selected}`);
+
+                  return `images/${selected}`;  
+
+            }
+            return ''; // Fallback if no picture
+        },     
+
+
     },
     watch: {
     // Watching the selectedRequest prop

@@ -9,16 +9,16 @@
 
 
 	</div>
-  <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-5 gap-4 w-full">
+	<div class="py-4 px-2 grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 mx-auto max-w-screen-xl sm:py-4 lg:px-6 w-full inline-flex">
 
-  <div class="grid gap-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-1">
+
+    <div class=" gap-4 w-2/3 " >
           <ItemList :selectedSearchObject="searchObject" v-if="enableItemSearch" @update:selectedItem="retrieveSelectedItem" />
 				</div>
-        <div class="col-span-2 sm:col-span-1 md:col-span-1 bg-sky-50 h-auto md:h-full flex flex-col">
+     <div class=" bg-sky-50 h-auto w-1/3 p-2 md:h-full flex flex-col">
        <RetrieveItem :selectedItem="itemID" v-if="getItem" />
 			</div>
     </div>
-
 </section>
 
 
