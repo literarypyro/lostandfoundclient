@@ -27,7 +27,7 @@
 
         </div  class="p3 h-auto size-20 text-wrap">
         <!-- Display user information and latest status, ensuring safety for undefined properties -->
-            <img :src="getImagePath(request?.details?.picture)"  v-if="item?.details?.picture" alt="Image Item" />
+            <img :src="getImagePath(request?.details?.picture)"  v-if="request?.details?.picture" alt="Image Item" />
             <div class="font-bold text-[#002D74] row-span-5 text-center text-md text-wrap" v-else-if="!item?.details?.picture">
                 No Image for Reference available
             </div>
@@ -62,7 +62,17 @@ export default {
             this.$emit('update:showRetrieveRequest',true);
             this.selectedRequestLocal = selected; // Update local state
             this.$emit('update:selectedRequest', selected); // Emit the updated value to the parent component if needed
-        }
+        },
+        getImagePath(selected) {
+            if (selected) {
+//                return require(`@images/${selected}`);
+
+                  return `/images/${selected}`;  
+
+            }
+            return ''; // Fallback if no picture
+        },   
+
     },
     mounted() {
         axios.get(`/requests/${this.requestedId}`)

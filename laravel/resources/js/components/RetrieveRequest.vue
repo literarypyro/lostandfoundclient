@@ -4,7 +4,7 @@
     
     
     
-    <img :src="getImagePath(item?.details?.picture)"  alt="Image Item" v-if="request?.details?.picture"/>
+    <img :src="getImagePath(request?.details?.picture)"  alt="Image Item" v-if="request?.details?.picture"/>
 <div class="font-bold text-center">{{  request?.title }}</div>
 <div class="font-bold  text-center">{{  request?.description }}</div>
 <div class='ml-8 mt-3 p-3'>
@@ -39,6 +39,19 @@ export default {
             showRetrieveRequest:false,
             request:{},
         };
+    },
+    methods: {
+
+        getImagePath(selected) {
+            if (selected) {
+//                return require(`@images/${selected}`);
+
+                  return `/images/${selected}`;  
+
+            }
+            return ''; // Fallback if no picture
+        },   
+
     },
     watch: {
     // Watching the selectedRequest prop

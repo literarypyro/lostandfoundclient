@@ -114,6 +114,7 @@ props: {
                 otherdetails:"",
                 item_category:"",
                 item_location:"",
+
             }),
             locations: [],
             categories:[],
@@ -130,10 +131,28 @@ props: {
         submitForm() {
       // When form is submitted, post the data
         try {
-            const response=axios.post(`/addrequest/${this.user}`,this.form);
+
+            const formData=new FormData();
+            
+            formData.append('title',this.form.title);
+            formData.append('file',this.form.file);
+            formData.append('description',this.form.description);
+            formData.append('datelost',this.form.datelost);
+            formData.append('shape',this.form.shape);
+            formData.append('color',this.form.color);
+            formData.append('length',this.form.length);
+            formData.append('width',this.form.width);
+            formData.append('otherdetails',this.form.otherdetails);
+            formData.append('item_category',this.form.item_category);
+            formData.append('item_location',this.form.item_location);
+            formData.append('picture',this.form.picture);
+
+
+            const response=axios.post(`/addrequest/${this.user}`,formData);
 
             if(response){
-                Inertia.visit(`/dashboard/${this.user}`);
+                console.log(response);
+    //            Inertia.visit(`/dashboard/${this.user}`);
 
 
             }
@@ -151,7 +170,6 @@ props: {
 
     },
     mounted() {
-        console.log(`Sssss${this.user}`);
         axios.get('/locations')
         .then(response=> {
             console.log(response.data);

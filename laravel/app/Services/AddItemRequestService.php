@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models;
 use App\Services\AddItemRequestService;
 
+use Intervention\Image\ImageManagerStatic as Image;
 
 class AddItemRequestService {
 	
@@ -75,17 +76,54 @@ class AddItemRequestService {
 		$details->shape=$request->shape;
 		$details->length=$request->length;
 		$details->width=$request->width;
+
 		$details->other_details=$request->other_details;
 		
 		$details->save();
 		
 		$response["message"]="Data successfully added";
-		
+
+		\App\Services\AddItemRequestService::addPhoto($details,$request);
+
 		return $response;
 	
 
 	
 	}
+
+	
+	public static function addPhoto($details,$request){
+
+		//		if ($request->hasFile('photo')) {
+					//$image      = $request->file('file');
+					$image=$request->photo;
+					
+					$fileName   = time() . '.' . $image->getClientOriginalExtension();
+		
+					$img = Image::make($image->getRealPath());
+					$img->resize(420, 320, function ($constraint) {
+						$constraint->aspectRatio();                 
+					});
+		
+					$img->stream(); // <-- Key point
+		
+		
+		
+					//dd();
+					//Storage::disk('local')->put('images/items'.$fileName, $img, 'public');
+					
+					
+					$img->save(resource_path()."/images/".$fileName);
+					
+					
+					$details->picture=$fileName;
+					$details->save();
+		
+		//		}	
+			
+			}
+
+
 
 }
 

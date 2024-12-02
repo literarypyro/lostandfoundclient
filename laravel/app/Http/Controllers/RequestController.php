@@ -62,7 +62,7 @@ class RequestController extends Controller {
 
 
 	public function listMessages($id){
-		$request=new stdClass();
+		$request=new \stdClass();
 		$request->request_id=$id;
 
 		try {
@@ -131,6 +131,7 @@ class RequestController extends Controller {
 		
 		$input = $request->all();
 
+		$requestim=$request;
 		$request=new \stdClass();
 
 //		$request->user_id=$input['requestId'];
@@ -164,6 +165,7 @@ class RequestController extends Controller {
 		$key=$this->requestService->addItemRequest($request);
 
 		$request->request_id=$key;
+		$request->photo=$requestim->file('file');
 
 		$response=$this->requestService->addRequestDetails($request);
 

@@ -34,7 +34,8 @@ mix.webpackConfig({
               test: /\.(png|jpe?g|gif|svg)$/i,
               type: 'asset',  // Use asset module to handle images
               generator: {
-                  filename: 'images/[name].[hash:8][ext]',  // This ensures hashed filenames for images
+                //  filename: 'images/[name].[hash:8][ext]',  // This ensures hashed filenames for images
+                  filename: 'images/[name][ext]',  // This ensures hashed filenames for images
 
              },
           },
