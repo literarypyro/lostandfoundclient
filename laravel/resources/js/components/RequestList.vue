@@ -6,7 +6,7 @@
       <div v-for="request in localRequests" :key="request.id"  class="h-auto w-1/2">
         <!-- Display request properties -->
         <div class="inline-flex flex-row ">
-        <div class="p3 size-48 ">
+        <div class="p3 w-2/3 ">
 
         <div class="font-bold text-[#002D74]">{{ request.category?.type }}</div>
         <div class="bg-stone-100  h-auto p-1">    
@@ -23,16 +23,19 @@
             <div>{{ request.request_date_label }}</div>
             <div>{{ request.latest_status?.status?.type }}</div>
         </div>
+        </div>
 
-
-        </div  class="p3 h-auto size-20 text-wrap">
+        <div  class="p3 h-auto w-1/3 text-wrap">
         <!-- Display user information and latest status, ensuring safety for undefined properties -->
-            <img :src="getImagePath(request?.details?.picture)"  v-if="request?.details?.picture" alt="Image Item" />
-            <div class="font-bold text-[#002D74] row-span-5 text-center text-md text-wrap" v-else-if="!item?.details?.picture">
+            <img :src="getImagePath(request?.details?.picture)"  v-if="request?.details?.picture" alt="Image Item" class=' mt-5 object-contain' />
+            <div class=" size-16  font-bold text-[#002D74] row-span-5 text-center text-md text-wrap" v-else-if="!item?.details?.picture">
                 No Image for Reference available
             </div>
         </div>
-        </div>
+    </div>
+    
+    
+    </div>
 
    </div>
    

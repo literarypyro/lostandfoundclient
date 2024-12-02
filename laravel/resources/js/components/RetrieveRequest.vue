@@ -1,12 +1,17 @@
 <template >
 <section>
-<div class='w-full items-center mt-5'>
+<div class="flex flex-column flex-wrap w-full">    
+<div class='w-full items-center mt-5 mb-3'>
+      
     
-    
-    
-    <img :src="getImagePath(request?.details?.picture)"  alt="Image Item" v-if="request?.details?.picture"/>
-<div class="font-bold text-center">{{  request?.title }}</div>
-<div class="font-bold  text-center">{{  request?.description }}</div>
+    <img :src="getImagePath(request?.details?.picture)" alt="Image Item" v-if="request?.details?.picture"/>
+</div>
+
+<div class="w-full text-center">
+
+<div class="mt-4 font-bold">{{  request?.title }}</div>
+<div class="font-bold">{{  request?.description }}</div>
+</div>
 <div class='ml-8 mt-3 p-3'>
 
 <div v-if="request?.details?.shape && request?.details?.shape!='N/A'">SHAPE: {{ request?.details?.shape }}</div>
@@ -17,10 +22,7 @@
 </div>
 
 
-<div></div>
-
 </div>
-
 </section>
 </template>
 <script>
