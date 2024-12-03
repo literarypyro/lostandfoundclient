@@ -1,10 +1,13 @@
 <template>
      <section class="bg-white w-full max-w-screen-xl">
    
-<div>Requests Made</div>
-
 <button @click="createRequest">Create a Request</button>
 <button @click="goToItem">Search In Items Inventory</button>
+
+
+<div>Requests You Have Made</div>
+
+
 <div class="grid-cols-2 w-full inline-flex flex-row flex-wrap">
 
 <div class="w-2/3">

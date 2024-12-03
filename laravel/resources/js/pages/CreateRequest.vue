@@ -113,19 +113,21 @@
 <div   class="bg-[#dfa674] rounded-2xl flex max-w-3xl p-5 " >    
     <div class="w-auto px-8">    
 
-        <div><label>TITLE</label></div><div>{{ title }}</div>
-        <div>><label>DESCRIPTION</label></div><div>{{ description }}</div>
-        <div><label>Shape</label></div><div>{{ shape }}</div>
-        <div><label>Color</label></div><div>{{ color }}</div>
-        <div><label>Length</label></div><div>{{ length }}</div>
-        <div><label>Width</label></div><div>{{ width }}</div>
-        <div><label>Other Details</label></div><div>{{ other_details }}</div>
 
+        <div class='flex flex-col'>
 
+        <div class='inline-flex flex-row'><label class="font-bold">TITLE: </label><div>{{ form.title }}</div></div>
+        <div class='inline-flex flex-row'><label class="font-bold">DESCRIPTION: </label><div>{{ form.description }}</div></div>
+        <div class='inline-flex flex-row'><label class="font-bold">Shape: </label><div>{{ form.shape }}</div></div>
+        <div class='inline-flex flex-row'><label class="font-bold">Color: </label><div>{{ form.color }}</div></div>
+        <div class='inline-flex flex-row'><label class="font-bold">Length: </label><div>{{ form.length }}</div></div>
+        <div class='inline-flex flex-row'><label class="font-bold">Width: </label><div>{{ form.width }}</div></div>
+        <div class='inline-flex flex-row'><label class="font-bold">Other Details: </label><div>{{ form.other_details }}</div></div>
 
+        </div>
 
         <button class="mx-2 mt-2 hover:border register text-white bg-[#002D74] hover:border-gray-400 rounded-xl py-2 px-5 hover:scale-110 hover:bg-[#002c7424] font-semibold duration-300"  @click='goBack'>Previous</button>
-            <button class="mx-2 mt-2 hover:border register text-white bg-[#002D74] hover:border-gray-400 rounded-xl py-2 px-5 hover:scale-110 hover:bg-[#002c7424] font-semibold duration-300"  @click='submitForm'>Submit</button>
+        <button class="mx-2 mt-2 hover:border register text-white bg-[#002D74] hover:border-gray-400 rounded-xl py-2 px-5 hover:scale-110 hover:bg-[#002c7424] font-semibold duration-300"  @click='submitForm'>Submit</button>
 
         </div>
         </div>
@@ -210,8 +212,7 @@ props: {
             const response=axios.post(`/addrequest/${this.user}`,formData);
 
             if(response){
-                console.log(response);
-    //            Inertia.visit(`/dashboard/${this.user}`);
+                Inertia.visit(`/dashboard/${this.user}`);
 
 
             }
