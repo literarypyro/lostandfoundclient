@@ -54,7 +54,7 @@
         <section class="bg-gray-100  min-h-dvh w-auto flex box-border justify-center items-center">
 
 <div   class="bg-[#dfa674] rounded-2xl flex max-w-3xl p-5 " >    
-    <div class="md:w-1/2 px-8">    
+    <div class="w-auto px-8">    
             <div><label>Where was it Last seen? (optional)</label></div>
         <div>
 
@@ -71,10 +71,10 @@
 
         </div>
     
-        <div class="mt-3" ><label>Shape (optional)</label></div><div><input type='text' class="p-1 mt-2 rounded-xl border h-auto w-auto"  id="shape" v-model="form.shape" /></div>
-        <div class="mt-3" ><label>Color (optional)</label></div><div><input type='text' class="p-1 mt-2 rounded-xl border h-auto w-auto"  id="color" v-model="form.color" /></div>
-        <div class="mt-3"><label>Length (optional)</label></div><div><input type='text' class="p-1 mt-2 rounded-xl border h-auto w-auto"  id="length" v-model="form.length" /></div>
-        <div class="mt-3"><label>Width (optional)</label></div><div><input type='text' class="p-1 mt-2 rounded-xl border h-auto w-auto"  id="width" v-model="form.width" /></div>
+        <div class="mt-3" ><label class="w-full">Shape (optional)</label></div><div><input type='text' class="p-1 mt-2 rounded-xl border h-auto w-auto"  id="shape" v-model="form.shape" /></div>
+        <div class="mt-3" ><label class="w-full">Color (optional)</label></div><div><input type='text' class="p-1 mt-2 rounded-xl border h-auto w-auto"  id="color" v-model="form.color" /></div>
+        <div class="mt-3"><label class="w-full">Length (optional)</label></div><div><input type='text' class="p-1 mt-2 rounded-xl border h-auto w-auto"  id="length" v-model="form.length" /></div>
+        <div class="mt-3"><label class="w-full">Width (optional)</label></div><div><input type='text' class="p-1 mt-2 rounded-xl border h-auto w-auto"  id="width" v-model="form.width" /></div>
 
         <button class="mx-2 mt-2 hover:border register text-white bg-[#002D74] hover:border-gray-400 rounded-xl py-2 px-5 hover:scale-110 hover:bg-[#002c7424] font-semibold duration-300" @click='goBack'>Previous</button>
         <button class="mx-1 mt-2 hover:border register text-white bg-[#002D74] hover:border-gray-400 rounded-xl py-2 px-5 hover:scale-110 hover:bg-[#002c7424] font-semibold duration-300" @click='goForward'>Next</button>
@@ -108,9 +108,28 @@
 
     </template>
     <template v-else>
-           dsadfd 
+        <section class="bg-gray-100  min-h-dvh w-auto flex box-border justify-center items-center">
+
+<div   class="bg-[#dfa674] rounded-2xl flex max-w-3xl p-5 " >    
+    <div class="w-auto px-8">    
+
+        <div><label>TITLE</label></div><div>{{ title }}</div>
+        <div>><label>DESCRIPTION</label></div><div>{{ description }}</div>
+        <div><label>Shape</label></div><div>{{ shape }}</div>
+        <div><label>Color</label></div><div>{{ color }}</div>
+        <div><label>Length</label></div><div>{{ length }}</div>
+        <div><label>Width</label></div><div>{{ width }}</div>
+        <div><label>Other Details</label></div><div>{{ other_details }}</div>
+
+
+
+
         <button class="mx-2 mt-2 hover:border register text-white bg-[#002D74] hover:border-gray-400 rounded-xl py-2 px-5 hover:scale-110 hover:bg-[#002c7424] font-semibold duration-300"  @click='goBack'>Previous</button>
-        <button class="mx-2 mt-2 hover:border register text-white bg-[#002D74] hover:border-gray-400 rounded-xl py-2 px-5 hover:scale-110 hover:bg-[#002c7424] font-semibold duration-300"  @click='submitForm'>Submit</button>
+            <button class="mx-2 mt-2 hover:border register text-white bg-[#002D74] hover:border-gray-400 rounded-xl py-2 px-5 hover:scale-110 hover:bg-[#002c7424] font-semibold duration-300"  @click='submitForm'>Submit</button>
+
+        </div>
+        </div>
+        </section>
 
 
         
