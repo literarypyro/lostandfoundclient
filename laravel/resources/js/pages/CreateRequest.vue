@@ -209,13 +209,11 @@ props: {
             formData.append('picture',this.form.picture);
 
 
-            const response=axios.post(`/addrequest/${this.user}`,formData);
-
-            if(response){
+            axios.post(`/addrequest/${this.user}`,formData).then(response=>{
                 Inertia.visit(`/dashboard/${this.user}`);
 
+            });
 
-            }
 
 
         }
