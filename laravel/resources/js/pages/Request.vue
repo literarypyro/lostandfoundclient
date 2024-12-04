@@ -236,10 +236,15 @@ export default {
     methods: {
         createRequest() {
             console.log(this.requestId);
-            
+            var reqident=this.requestId;
+            const reqid=this.cookies.get('requestid');
+            if(reqid){
+                reqident=reqid;
+                console.log(reqid);
+            }
 
 
-            Inertia.visit(`/createRequest/${this.requestId}`,['userID',this.requestId]);
+            Inertia.visit(`/createRequest/${reqident}`,['userID',reqident]);
 
 
         },

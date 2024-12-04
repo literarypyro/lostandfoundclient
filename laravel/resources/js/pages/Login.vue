@@ -106,7 +106,13 @@ export default {
         console.error('Login failed:', error);
       }
     }
-  }
+  },
+  mounted(){
+    this.cookies.remove('requestid');
+
+
+
+  },
 };
 </script>
 <style>

@@ -113,7 +113,7 @@ class AddItemRequestService {
 					//Storage::disk('local')->put('images/items'.$fileName, $img, 'public');
 					
 					
-					$img->save(resource_path()."/images/".$fileName);
+					$img->save(public_path()."/images/".$fileName);
 					
 					
 					$details->picture=$fileName;
