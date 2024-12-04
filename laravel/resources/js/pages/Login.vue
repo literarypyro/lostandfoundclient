@@ -59,8 +59,15 @@
 <script>
 import { Inertia } from '@inertiajs/inertia';
 import axios from 'axios';
+import { useCookies } from 'vue3-cookies';
+
 
 export default {
+  setup() {
+        const { cookies } = useCookies();
+        return { cookies };
+  },
+
   data() {
     return {
       username: '',
@@ -89,8 +96,9 @@ export default {
         if (userId) {
           // Use Inertia's visit method to navigate to /requests/:userId
 //          Inertia.visit(`/requests/${userId}`);
-
+            
             Inertia.visit(`/dashboard/${userId}`,['requestId',userId]);
+
         } else {
           console.error('User ID not found in response');
         }

@@ -43,8 +43,13 @@
   </template>
 <script>
 import axios from 'axios';
+import { useCookies } from 'vue3-cookies';
 
 export default {
+    setup() {
+        const { cookies } = useCookies();
+        return { cookies };
+    },
     props: {
         requests: Array,
         requestId: String,
@@ -78,6 +83,13 @@ export default {
 
     },
     mounted() {
+        const reqid=this.cookies.get('requestid');
+        if(reqid){
+            this.requestedId=reqid;
+            console.log(reqid);
+        }
+
+
         axios.get(`/requests/${this.requestedId}`)
             .then(response => {
                 console.log(response.data);

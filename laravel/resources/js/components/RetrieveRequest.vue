@@ -1,10 +1,10 @@
 <template >
 <section>
-<div class="flex flex-column flex-wrap w-auto">    
-<div class='w-full items-center mt-5 mb-3'>
+<div class="flex flex-column flex-wrap w-full">    
+<div class='w-auto items-center mt-5 mb-3'>
       
     
-    <img :src="getImagePath(request?.details?.picture)" class='items-center' alt="Image Item" v-if="request?.details?.picture"/>
+    <img :src="getImagePath(request?.details?.picture)" alt="Image Item" v-if="request?.details?.picture"/>
 </div>
 
 <div class="w-full text-center">
