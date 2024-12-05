@@ -6,7 +6,7 @@
       <div v-for="request in localRequests" :key="request.id"  class="h-auto w-1/2">
         <!-- Display request properties -->
         <div class="inline-flex flex-row ">
-        <div class="p3 w-2/3 ">
+        <div class="p3 min-w-64 w-2/3 ">
 
         <div class="font-bold text-[#002D74]">{{ request.category?.type }}</div>
         <div class="bg-stone-100  h-auto p-1">    

@@ -69,8 +69,8 @@ Route::post('/login',
 Route::post('/newuser',
 ['as'=>'register-user','uses'=>'AuthController@registerUser']);
 
-Route::get('/logout',
-['as'=>'logout','uses'=>'AuthController@logoutUser']);
+Route::get('/logout',function(){ return Inertia::render('Login'); });
+
 
 Route::post('/registerAddress/{id}',
 ['as'=>'reg-user-address','uses'=>'AuthController@addUserAddress']);

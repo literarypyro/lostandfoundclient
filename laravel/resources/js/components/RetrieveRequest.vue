@@ -1,10 +1,16 @@
 <template >
 <section>
 <div class="flex flex-column flex-wrap w-full">    
-<div class='w-auto items-center mt-5 mb-3'>
+<div class='w-full items-center mt-5 mb-3'>
       
-    
+    <div class="items-center w-full"> 
     <img :src="getImagePath(request?.details?.picture)" alt="Image Item" v-if="request?.details?.picture"/>
+</div>
+    <div class="w-full text-center">
+
+    <div  v-if="request?.details?.picture" class="mt-4 font-bold">(Image for Reference)</div>
+    </div>
+
 </div>
 
 <div class="w-full text-center">
