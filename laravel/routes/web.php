@@ -46,7 +46,7 @@ Route::get('/daterangefound/{searchType}/{searchTerm}/range/{dateRange}',
 
 Route::get('/item/{itemId}',['as'=>'retrieve-items','uses'=>'FoundItemController@retrieveItem']);
 
-Route::get('/request/{requestid}',['as'=>'retrieve-items','uses'=>'RequestController@retrieveRequest']);
+Route::get('/request/{requestid}',['as'=>'retrieve-request','uses'=>'RequestController@retrieveRequest']);
 
 
 
@@ -80,3 +80,7 @@ Route::post('/registerProfile/{id}',
 
 Route::post('/registerContact/{id}',
 ['as'=>'reg-user-contact','uses'=>'AuthController@addUserContact']);
+
+Route::get('/{any}', function () {
+    return Inertia::render('Login');// or any custom view for non-matching routes
+})->where('any', '.*'); 

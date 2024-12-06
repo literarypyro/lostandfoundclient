@@ -67,7 +67,7 @@
  <template v-if="formStep===1"  >
         <section class="bg-gray-100 min-h-dvh flex w-full   box-border justify-center items-center">
 
-        <div   class="bg-[#dfa674] rounded-2xl  max-w-3xl flex p-5 " >
+        <div   class="bg-[#dfa674] rounded-2xl  min-w-64  max-w-3xl flex p-5 " >
             <div class="md:w-1/2 px-8">
    
     
@@ -118,7 +118,7 @@
     <template v-else-if="formStep===2" >
         <section class="bg-gray-100  min-h-dvh w-auto flex box-border justify-center items-center">
 
-<div   class="bg-[#dfa674] rounded-2xl flex max-w-3xl p-5 " >    
+<div   class="bg-[#dfa674] rounded-2xl min-w-64 flex max-w-3xl p-5 " >    
     <div class="w-auto px-8">    
             <div><label>Where was it Last seen? (optional)</label></div>
         <div>
@@ -164,7 +164,9 @@
 
             </div>
         </div>
-        <div><label>Do you have any further details or comments on the request?</label><input type=text class="p-1 mt-2 rounded-xl border h-auto w-auto"   v-model="form.otherdetails" /></div>
+        <div><label>Do you have any further details or comments on the request?</label>
+          <textarea rows="4" class="p-1 mt-1 rounded-xl border h-full w-auto" id='otherdetails' v-model="form.otherdetails"></textarea></div>
+
         
         <button class="mx-2 mt-2 hover:border register text-white bg-[#002D74] hover:border-gray-400 rounded-xl py-2 px-5 hover:scale-110 hover:bg-[#002c7424] font-semibold duration-300"  @click='goBack'>Previous</button>
         <button class="mx-2 mt-2 hover:border register text-white bg-[#002D74] hover:border-gray-400 rounded-xl py-2 px-5 hover:scale-110 hover:bg-[#002c7424] font-semibold duration-300"  @click='goForward'>Next</button>
@@ -175,7 +177,7 @@
     <template v-else>
         <section class="bg-gray-100  min-h-dvh w-auto flex box-border justify-center items-center">
 
-<div   class="bg-[#dfa674] rounded-2xl flex max-w-3xl p-5 " >    
+<div   class="bg-[#dfa674] rounded-2xl min-w-64 flex max-w-3xl p-5 " >    
     <div class="w-auto px-8">    
 
 
@@ -187,7 +189,7 @@
         <div class='inline-flex flex-row'><label class="font-bold">Color: </label><div>{{ form.color }}</div></div>
         <div class='inline-flex flex-row'><label class="font-bold">Length: </label><div>{{ form.length }}</div></div>
         <div class='inline-flex flex-row'><label class="font-bold">Width: </label><div>{{ form.width }}</div></div>
-        <div class='inline-flex flex-row'><label class="font-bold">Other Details: </label><div>{{ form.other_details }}</div></div>
+        <div class='inline-flex flex-row'><label class="font-bold">Other Details: </label><div>{{ form.otherdetails }}</div></div>
 
         </div>
 
@@ -212,6 +214,7 @@ import { useCookies } from 'vue3-cookies';
 const selected = ref("");
 
 export default {
+    name:"CreateRequest",
     setup() {
         const { cookies } = useCookies();
         return { cookies };
@@ -316,10 +319,6 @@ props: {
 
     },
     mounted() {
-
-
-
-
         axios.get('/locations')
         .then(response=> {
             console.log(response.data);

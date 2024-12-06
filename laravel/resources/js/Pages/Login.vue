@@ -63,6 +63,8 @@ import { useCookies } from 'vue3-cookies';
 
 
 export default {
+  name: "Login",
+  
   setup() {
         const { cookies } = useCookies();
         return { cookies };

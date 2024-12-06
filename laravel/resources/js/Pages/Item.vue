@@ -29,25 +29,28 @@
           <a
             class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
             href="#"
-            data-twe-nav-link-ref  @click="createRequest"
-            >Create a Request</a
+            data-twe-nav-link-ref  @click="checkRequestList"
+            >Your Missing Items</a
           >
-        </li>
-        <!-- Team link -->
-        <li class="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
           <a
             class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
             href="#"
-            data-twe-nav-link-ref @click="goToItem"
-            >Search In Items Inventory</a
+            data-twe-nav-link-ref  @click="createRequest"
+            >Create a Request</a
           >
+
+
+
+
         </li>
+        <!-- Team link -->
+ 
       </ul>
       <!-- Left links -->
     </div>
 
     <!-- Right elements -->
-     <div class="relative flex items-center">
+    <div class="relative flex items-center">
       <!-- Icon -->
       <a class="me-4 text-neutral-600 dark:text-white" v-on:click="logout">
         <span class="[&>svg]:w-5">
@@ -58,62 +61,100 @@
         </span>
       </a>
 </div>
-
-    <!-- Right elements -->
   </div>
 </nav>
 
-     <section class="bg-white w-full max-w-screen-xl">
-   
+    <section class="bg-white w-full max-w-screen-xl">
+	<div class="py-4 px-2 mx-auto max-w-screen-xl sm:py-4 lg:px-6 w-full">
+			<div class="col-span-2 sm:col-span-2 md:col-span-2 bg-stone-50 w-full">
+        <SearchItem @update:searchFromItems="proceedSearch"  />
+			</div>
 
 
-<div>Requests You Have Made</div>
 
 
-<div class="grid-cols-2 w-full inline-flex flex-row flex-wrap">
-
-<div class="w-2/3">
-<RequestList :requestId="requestId" @update:selectedRequest="updateSelectedRequest" />
-</div>
-
-<div class="w-1/3">
-<RetrieveRequest :selectedRequest="requestedId"  v-if="showRequestedItem" />
-</div>
+	</div>
+	<div class="py-4 px-2 grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 mx-auto max-w-screen-xl sm:py-4 lg:px-6 w-full inline-flex">
 
 
-</div>
+    <div class=" gap-4 w-2/3 " >
+          <ItemList :selectedSearchObject="searchObject" v-if="enableItemSearch" @update:selectedItem="retrieveSelectedItem" />
+				</div>
+     <div class=" bg-sky-50 h-auto w-1/3 p-2 md:h-full flex flex-col">
+       <RetrieveItem :selectedItem="itemID" v-if="getItem" />
+			</div>
+    </div>
 </section>
-</template>
-<script>
-import RetrieveRequest from '@components/RetrieveRequest.vue';
-import RequestList from '@components/RequestList.vue';
-import { Inertia } from '@inertiajs/inertia';
-import { useCookies } from 'vue3-cookies';
 
 
-export default {
+
+
+
+
+
+
+  </template>
+  
+  <script>
+  import SearchItem from '@components/SearchItem.vue';
+  import ItemList from '@components/ItemList.vue';
+  import RetrieveItem from '@components/RetrieveItem.vue';
+  import { Inertia } from '@inertiajs/inertia';
+  import { useCookies } from 'vue3-cookies';
+
+  export default {
+    name:"Item",
     setup() {
         const { cookies } = useCookies();
         return { cookies };
-    },
+    },  
     props: {
-        requests:Array,
-        requestId:String,
+      items: Array,
+      requestedId: String,
+      requestId:String
     },
-    data() {
-        return  {
-            showRequestedItem:false,
+    data(){
+      return {
+        enableItemSearch:false,
+        getItem:false,
+        searchObject:{
+          dateLost:"",
+          searchClass:"",
+          searchWord:"",
+          itemID:""
 
-        }
+        },
 
+      }
 
-
-    },
+    },  
     components: {
-        RequestList,
-        RetrieveRequest,
+      SearchItem,
+      ItemList,
+      RetrieveItem,
     },
-    methods: {
+    methods:{
+        proceedSearch(selected){
+           if(!this.enableItemSearch) 
+           { this.enableItemSearch=true; 
+            console.log('enableItemSearch set to:', this.enableItemSearch);
+
+
+
+           }
+
+            this.getItem=false;
+            this.searchObject=selected;
+            console.log(selected);
+
+        },
+        retrieveSelectedItem(selected){
+
+            if(!this.getItem) { this.getItem=true; } else { this.getItem=false; this.getItem=true; }
+
+            this.itemID=selected;
+
+        },
         createRequest() {
             console.log(this.requestId);
             var reqident=this.requestId;
@@ -128,16 +169,17 @@ export default {
 
 
         },
-        goToItem() {
-            Inertia.visit("/dashboardItem");
+        checkRequestList() {
+
+
+            Inertia.visit(`/dashboard/${this.requestId}`);
 
 
         },
-        updateSelectedRequest(selected){
-//            this.requestedId="";
-            if(!this.showRequestedItem) { this.showRequestedItem=true; } else { this.showRequestedItem=false; this.showRequestedItem=true; }
+        goToItem() {
 
-            this.requestedId=selected;
+            Inertia.visit(`/dashboardItem`);
+
 
         },
         logout(){
@@ -146,29 +188,10 @@ export default {
 
         }
 
-
-    },
-    mounted(){
-
-        const reqid=this.cookies.get('requestid');
-        if(!reqid){
-
-            this.cookies.set('requestid',this.requestId);
-
-        }
-
-
-     }
-
-
-}
-
-
-
-</script>
-<style>
-
-
-
-
-</style>
+    }
+  };
+  </script>
+  
+  <style scoped>
+  /* You can add your styles here if needed */
+  </style>
