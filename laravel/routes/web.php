@@ -27,6 +27,9 @@ Route::get('/registerUser',function(){ return Inertia::render('Register'); });
 Route::get('/dashboardItem',function(){ return Inertia::render('Item'); });
 
 
+Route::post('/verify-user', ['as' => 'verify-user', 'uses' => 'AuthController@verifyUser']);
+
+
 Route::get('/requests/{requestId}',['as'=>'retrieve-requests','uses'=>'RequestController@listRequests']);
 
 Route::post('/addrequest/{requestId}',['as'=>'add-request','uses'=>'RequestController@addRequest']);

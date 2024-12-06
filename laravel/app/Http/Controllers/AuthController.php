@@ -70,7 +70,7 @@ class AuthController extends Controller {
 	}
 	public function retrieveUser($id){
 
-		$request=new stdClass();
+		$request=new \stdClass();
 
 		 $request->record=$id;
 		 $request->type="single";		
@@ -79,7 +79,30 @@ class AuthController extends Controller {
 		 return \Response::json($auth);
 		
 	}
+
+	public function verifyUser(Request $request)
+	{
+		// Retrieve the username from the request data
+		$input = $request->all();
+		$username = $input['user'];
 	
+		// Find the user by username
+		$user = \App\Models\User::where('username', $username)->first();
+	
+		// Prepare the response
+		$auth = [];
+		if ($user) {
+			$auth["verification"] = true;  // User found, verification failed
+		} else {
+			$auth["verification"] = false;   // User not found, verification passed
+		}
+	
+		// Return as JSON response
+		return response()->json($auth);
+	}
+
+
+
 	public function registerUser(Request $request){
 	
 		$input = $request->all();

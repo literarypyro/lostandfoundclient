@@ -16,21 +16,24 @@ use Illuminate\Support\Str;
 
 class AuthService {
 
-	public function verifyUser(Request $request){
-		$input=$request->all();
-		$user=\App\Models\User::whereRaw("username='$username'");
-		
-
-		if($user){
-			$auth["verification"]=false;
-
-
+	public function verifyUser(Request $request)
+	{
+		// Retrieve input from the request
+		$input = $request->all();
+		$username = $input['user'];
+	
+		// Safely query the User model
+		$user = \App\Models\User::where('username', $username)->first();
+	
+		// Prepare the response based on user existence
+		if ($user) {
+			$auth["verification"] = true; // User found, authentication failed
+		} else {
+			$auth["verification"] = false; // User not found, authentication successful
 		}
-		else {
-			$auth["verification"]=true;
-
-		}
-		return $auth;
+	
+		// Return the result as a JSON response
+		return response()->json($auth);
 	}
 
 

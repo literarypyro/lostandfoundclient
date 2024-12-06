@@ -6,9 +6,9 @@
 <div   class="bg-[#dfa674] rounded-2xl  max-w-xl flex p-5 " >
     <div class="md:w-1/2 px-8">
         
-        <div class="mt-3" ><label>Username</label><input type='text' class="p-1 mt-2 min-h-10  rounded-xl border h-auto w-auto" v-model="username" id="username" /><span id='userverification' style="color:red;"></span></div>
+        <div class="mt-3" ><label>Username</label><input type='text' class="p-1 mt-2 min-h-10  rounded-xl border h-auto w-auto" v-model="username" id="username" /><span id='userverification' style="color:red;"> {{ warning }}</span></div>
         <div class="mt-3" ><label>Password</label><input type='password' class="p-1 mt-2  min-h-10 rounded-xl border h-auto w-auto" v-model="password" id="pass" /></div>
-        <div class="mt-3" ><label>Confirm Password</label><input type='password' class="p-1 mt-2  min-h-10 rounded-xl border h-auto w-auto" v-model="confirmpass" id="confirmpass" /></div>
+        <div class="mt-3" ><label>Confirm Password</label><input type='password' class="p-1 mt-2  min-h-10 rounded-xl border h-auto w-auto" v-model="confirmpass" id="confirmpass" /><span id='userverification' style="color:red;"> {{ warningmatch }}</span></div>
         <div class='mt-3'>
 
         <button class="mx-2 mt-2 hover:border register text-white bg-[#002D74] hover:border-gray-400 rounded-xl py-2 px-5 hover:scale-110 hover:bg-[#002c7424] font-semibold duration-300" @click='goForward'>Next</button>
@@ -186,6 +186,8 @@ export default {
     },
     data() {
         return {
+            userexists:false,
+            passmatch:false,
             formStep: 1,
             countries:[],
             username:"",
@@ -205,11 +207,16 @@ export default {
             age:"",
             sex:"",
             status:"",
+            warning:"",
+            warningmatch:"",
+            confirmpass:""
         }    
     },
     methods: {
         goForward(){
-            this.formStep++;
+            if((!this.userexists)&&(passmatch)){
+                this.formStep++;
+            }
 
         },
         goBack(){
@@ -275,6 +282,59 @@ export default {
 
 
 
+    },
+
+    watch: {
+        // Watching the selectedRequest prop
+        confirmpass(newConfirm,oldConfirm){
+
+            if(newConfirm!=this.password){
+                this.warningmatch="Passwords do not match."                
+
+                this.passmatch=false;
+            }
+            else {
+                this.warningmatch="";
+                this.passmatch=true;
+            }
+
+
+        },
+        async username(newUser, oldUser) {
+
+
+            await axios.post('/verify-user', { user: newUser })
+            .then(response => {
+                if(response.data.verification){
+                    this.warning="This username already exists.";
+                    this.userexists=true;
+                } // JSON response
+                else {
+                    this.warning="";
+                    this.userexists=false;
+
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+
+
+    /*
+            try {
+                const output = await axios.get(`/user/${newUser}`);
+                if (output) {
+                    // Assuming you're interested in the response data
+                    console.log(output.data); // Log the data from the response
+                    // If you need to access auth or other specific data:
+                    // const verify = output.data.auth;
+                    // console.log(verify);
+                }
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            }
+                */
+        }
     },
     mounted() {
         axios.get('/countries')
