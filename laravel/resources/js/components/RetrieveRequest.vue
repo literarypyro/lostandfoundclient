@@ -1,12 +1,12 @@
 <template >
 <section>
 <div class="flex flex-column flex-wrap w-full">    
-<div class='w-full items-center mt-5 mb-3'>
+<div class='w-full items-center mt-5 pt-2 mb-3'>
       
-    <div class="items-center w-full"> 
+    <div class="items-center w-full justify-center flex "> 
     <img :src="getImagePath(request?.details?.picture)" alt="Image Item" v-if="request?.details?.picture"/>
 </div>
-    <div class="w-full text-center">
+    <div class="w-full text-center ">
 
     <div  v-if="request?.details?.picture" class="mt-4 font-bold">(Image for Reference)</div>
     </div>
@@ -15,8 +15,8 @@
 
 <div class="w-full text-center">
 
-<div class="mt-4 font-bold">{{  request?.title }}</div>
-<div class="font-bold">{{  request?.description }}</div>
+<div class="mt-4 font-bold text-xl">{{  request?.title }}</div>
+<div class="font-bold text-lg">{{  request?.description }}</div>
 </div>
 <div class='ml-8 mt-3 p-3'>
 
