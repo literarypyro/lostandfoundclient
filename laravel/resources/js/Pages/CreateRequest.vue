@@ -67,7 +67,7 @@
  <template v-if="formStep===1"  >
         <section class="bg-gray-100 min-h-dvh flex w-full   box-border justify-center items-center">
 
-        <div   class="bg-[#dfa674] rounded-2xl  min-w-64  max-w-3xl flex p-5 " >
+        <div   class="bg-[#dfa674] rounded-2xl  min-w-64  max-w-xl flex p-5 " >
             <div class="md:w-1/2 px-8">
    
     
@@ -82,27 +82,25 @@
         {{ category.type }} 
       </option>
 </select></div>
-        <div class="w-1/2 px-1 ">
-            <div class="mt-3"><label>Title</label></div>
-
-            <div >
-                <input class="p-1 mt-2 rounded-xl border h-auto w-auto" type='text' id='title' v-model="form.title" />
+        <div class="w-auto px-1 ">
+            <div class="mt-3"><label>Item Name</label>
+                <input class="p-1 mt-2 min-w-12 rounded-xl border h-auto w-80" type='text' id='title' v-model="form.title" />
 
             
             </div>
 
         </div>
-        <div class="w-1/2 px-1 ">
+        <div class="w-full px-1 ">
 
-    <div  class="mt-3"><label>Date Lost</label></div><div><datepicker class="w-auto" id='datelost' v-model="form.datelost"></datepicker></div>
+    <div  class="mt-3"><label>Date Lost</label><datepicker class="w-auto" id='datelost' v-model="form.datelost"></datepicker></div>
         </div>
 
         <div class="md:w-2/2 px-1">
 
-<div  class="mt-3"><label>Description</label></div><div >
+<div  class="mt-3 w-auto"><label>Description</label></div><div >
         
         
-        <textarea rows="4" class="p-1 mt-1 rounded-xl border h-full w-auto" id='description' v-model="form.description"></textarea></div>
+        <textarea rows="4" class="p-1 mt-1 rounded-xl border h-full w-80 min-w-12" id='description' v-model="form.description"></textarea></div>
 
     </div>
 
@@ -118,12 +116,12 @@
     <template v-else-if="formStep===2" >
         <section class="bg-gray-100  min-h-dvh w-auto flex box-border justify-center items-center">
 
-<div   class="bg-[#dfa674] rounded-2xl min-w-64 flex max-w-3xl p-5 " >    
-    <div class="w-auto px-8">    
+<div   class="bg-[#dfa674] rounded-2xl min-w-64 flex max-w-xl p-5 " >    
+    <div class="w-auto px-8 m-4">    
             <div><label>Where was it Last seen? (optional)</label></div>
         <div>
 
-            <select id="item_location"  class="p-1 mt-2 rounded-xl border h-auto w-auto"  
+            <select id="item_location"  class="p-1 mt-2 min-w-80 rounded-xl border h-auto w-auto"  
       v-model="form.item_location"
     >
       <option v-for="location in locations"
@@ -135,14 +133,28 @@
 </select>
 
         </div>
-    
-        <div class="mt-3" ><label class="w-full">Shape (optional)</label></div><div><input type='text' class="p-1 mt-2 rounded-xl border h-auto w-auto"  id="shape" v-model="form.shape" /></div>
-        <div class="mt-3" ><label class="w-full">Color (optional)</label></div><div><input type='text' class="p-1 mt-2 rounded-xl border h-auto w-auto"  id="color" v-model="form.color" /></div>
-        <div class="mt-3"><label class="w-full">Length (optional)</label></div><div><input type='text' class="p-1 mt-2 rounded-xl border h-auto w-auto"  id="length" v-model="form.length" /></div>
-        <div class="mt-3"><label class="w-full">Width (optional)</label></div><div><input type='text' class="p-1 mt-2 rounded-xl border h-auto w-auto"  id="width" v-model="form.width" /></div>
+
+        <div class=' inline-flex flex-row'>
+ 
+        <div class="mt-3 w-2/5" ><label class="w-full">Shape (optional)</label><input type='text' class=" py-1 pl-2  mt-2   min-h-10 rounded-xl border h-auto w-full"  id="shape" v-model="form.shape" /></div>
+        <div class="mt-3 w-3/5" ><label class="w-full">Color (optional)</label><input type='text' class=" pl-2 py-1 ml-2 mt-2 rounded-xl border  min-h-10 h-auto w-auto"  id="color" v-model="form.color" /></div>
+
+        </div>  
+
+        
+        <div class="inline-flex flex-row">
+        
+        <div class="mt-3 w-2/5"><label class="w-full">Length (optional)</label><input type='text' class="pl-2 py-1 min-h-10 mt-1 rounded-xl border h-auto w-full"  id="length" v-model="form.length" /></div>
+        <div class="mt-3 w-3/5"><label class="w-full">Width (optional)</label><input type='text' class=" pl-2 py-1  ml-2 min-h-10 mt-1 rounded-xl border h-auto w-auto"  id="width" v-model="form.width" /></div>
+        
+      
+      </div>
+
+      <div class='mt-3 w-auto inline-flex flex-row'>
 
         <button class="mx-2 mt-2 hover:border register text-white bg-[#002D74] hover:border-gray-400 rounded-xl py-2 px-5 hover:scale-110 hover:bg-[#002c7424] font-semibold duration-300" @click='goBack'>Previous</button>
         <button class="mx-1 mt-2 hover:border register text-white bg-[#002D74] hover:border-gray-400 rounded-xl py-2 px-5 hover:scale-110 hover:bg-[#002c7424] font-semibold duration-300" @click='goForward'>Next</button>
+        </div>
 </div>
 </div>
 </section>
@@ -155,47 +167,53 @@
     <div class="md:w-1/2 px-8"> 
         <div><label>Do you have a previous picture for reference purposes? (Optional)</label>
             
-            <div>
+            <div class='inline-flex flex-row'>
 
                 <input type="text" id="picture" class="p-1 mt-2 rounded-xl border h-auto w-auto"   v-model="form.picture" />
 
-                <input type="file" @change="handleFileUpload" id="fileUpload" />
+                <input type="file" class="p1 mt-2" @change="handleFileUpload" id="fileUpload" />
 
 
             </div>
         </div>
-        <div><label>Do you have any further details or comments on the request?</label>
-          <textarea rows="4" class="p-1 mt-1 rounded-xl border h-full w-auto" id='otherdetails' v-model="form.otherdetails"></textarea></div>
+        <div class="mt-2 w-auto">
+          <label>Do you have any further details or comments on the request?</label>
+        </div>  
+        <div class="p1 w-auto mt-2">  
+          <textarea rows="4" class="p-1 mt-1 rounded-xl border h-full w-80" id='otherdetails' v-model="form.otherdetails"></textarea>
+        </div>
 
-        
+        <div class='mt-3 w-auto inline-flex flex-row'>
+
         <button class="mx-2 mt-2 hover:border register text-white bg-[#002D74] hover:border-gray-400 rounded-xl py-2 px-5 hover:scale-110 hover:bg-[#002c7424] font-semibold duration-300"  @click='goBack'>Previous</button>
         <button class="mx-2 mt-2 hover:border register text-white bg-[#002D74] hover:border-gray-400 rounded-xl py-2 px-5 hover:scale-110 hover:bg-[#002c7424] font-semibold duration-300"  @click='goForward'>Next</button>
-
+</div>
 </div></div></section>
 
     </template>
     <template v-else>
         <section class="bg-gray-100  min-h-dvh w-auto flex box-border justify-center items-center">
 
-<div   class="bg-[#dfa674] rounded-2xl min-w-64 flex max-w-3xl p-5 " >    
+<div   class="bg-[#dfa674] rounded-2xl min-w-64 flex max-w-xl p-5 " >    
     <div class="w-auto px-8">    
 
 
         <div class='flex flex-col'>
 
-        <div class='inline-flex flex-row'><label class="font-bold">TITLE: </label><div>{{ form.title }}</div></div>
-        <div class='inline-flex flex-row'><label class="font-bold">DESCRIPTION: </label><div>{{ form.description }}</div></div>
-        <div class='inline-flex flex-row'><label class="font-bold">Shape: </label><div>{{ form.shape }}</div></div>
-        <div class='inline-flex flex-row'><label class="font-bold">Color: </label><div>{{ form.color }}</div></div>
-        <div class='inline-flex flex-row'><label class="font-bold">Length: </label><div>{{ form.length }}</div></div>
-        <div class='inline-flex flex-row'><label class="font-bold">Width: </label><div>{{ form.width }}</div></div>
-        <div class='inline-flex flex-row'><label class="font-bold">Other Details: </label><div>{{ form.otherdetails }}</div></div>
+        <div class='inline-flex flex-row p-2'><label class="font-bold">ITEM NAME: </label><div>{{ form.title }}</div></div>
+        <div class='inline-flex flex-row p-2'><label class="font-bold">DESCRIPTION: </label><div>{{ form.description }}</div></div>
+        <div class='inline-flex flex-row p-2'><label class="font-bold">Shape: </label><div>{{ form.shape }}</div></div>
+        <div class='inline-flex flex-row p-2'><label class="font-bold">Color: </label><div>{{ form.color }}</div></div>
+        <div class='inline-flex flex-row p-2'><label class="font-bold">Length: </label><div>{{ form.length }}</div></div>
+        <div class='inline-flex flex-row p-2'><label class="font-bold">Width: </label><div>{{ form.width }}</div></div>
+        <div class='inline-flex flex-row p-2'><label class="font-bold">Other Details: </label><div>{{ form.otherdetails }}</div></div>
 
         </div>
+        <div class='mt-3 w-auto inline-flex flex-row'>
 
         <button class="mx-2 mt-2 hover:border register text-white bg-[#002D74] hover:border-gray-400 rounded-xl py-2 px-5 hover:scale-110 hover:bg-[#002c7424] font-semibold duration-300"  @click='goBack'>Previous</button>
         <button class="mx-2 mt-2 hover:border register text-white bg-[#002D74] hover:border-gray-400 rounded-xl py-2 px-5 hover:scale-110 hover:bg-[#002c7424] font-semibold duration-300"  @click='submitForm'>Submit</button>
-
+</div>
         </div>
         </div>
         </section>
