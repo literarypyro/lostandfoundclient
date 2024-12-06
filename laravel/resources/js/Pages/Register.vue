@@ -3,17 +3,25 @@
     <template v-if="formStep===1">
         <section class="bg-gray-100 min-h-dvh flex w-full   box-border justify-center items-center">
 
-<div   class="bg-[#dfa674] rounded-2xl  max-w-xl flex p-5 " >
+<div   class="bg-[#dfa674] rounded-2xl  max-w-xl flex py-5 pl-5 pr-2 " >
     <div class="md:w-1/2 px-8">
-        
+
+        <div class="flex flex-col">
         <div class="mt-3" ><label>Username</label><input type='text' class="p-1 mt-2 min-h-10  rounded-xl border h-auto w-auto" v-model="username" id="username" /><span id='userverification' style="color:red;"> {{ warning }}</span></div>
         <div class="mt-3" ><label>Password</label><input type='password' class="p-1 mt-2  min-h-10 rounded-xl border h-auto w-auto" v-model="password" id="pass" /></div>
         <div class="mt-3" ><label>Confirm Password</label><input type='password' class="p-1 mt-2  min-h-10 rounded-xl border h-auto w-auto" v-model="confirmpass" id="confirmpass" /><span id='userverification' style="color:red;"> {{ warningmatch }}</span></div>
-        <div class='mt-3'>
+      
+    </div>      
+    <div class='mt-3 w-auto inline-flex flex-row'>
 
-        <button class="mx-2 mt-2 hover:border register text-white bg-[#002D74] hover:border-gray-400 rounded-xl py-2 px-5 hover:scale-110 hover:bg-[#002c7424] font-semibold duration-300" @click='goForward'>Next</button>
-</div>
-</div>
+        <button class="mx-2 mt-2 hover:border register text-white bg-[#002D74] hover:border-gray-400 rounded-xl py-2 px-5 hover:scale-110 hover:bg-[#002c7424] font-semibold duration-300" @click='logout'>Login</button>
+
+    <button class="mx-2 mt-2 hover:border register text-white bg-[#002D74] hover:border-gray-400 rounded-xl py-2 px-5 hover:scale-110 hover:bg-[#002c7424] font-semibold duration-300" @click='goForward'>Next</button>
+
+    </div>
+
+    </div>    
+
 </div>
 </section>
     </template>
@@ -214,13 +222,18 @@ export default {
     },
     methods: {
         goForward(){
-            if((!this.userexists)&&(passmatch)){
+            if(!this.userexists && this.passmatch){
                 this.formStep++;
             }
 
         },
         goBack(){
             this.formStep--;
+        },
+        logout(){
+            Inertia.visit(`/logout`);
+
+
         },
         async registerUser(){
             try {
@@ -300,6 +313,22 @@ export default {
 
 
         },
+        password(newConfirm,oldConfirm){
+
+        if(newConfirm!=this.confirmpass){
+            this.warningmatch="Passwords do not match."                
+
+            this.passmatch=false;
+        }
+        else {
+            this.warningmatch="";
+            this.passmatch=true;
+        }
+
+
+        },
+
+
         async username(newUser, oldUser) {
 
 
