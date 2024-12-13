@@ -2,11 +2,15 @@ const mix = require('laravel-mix');
 const path = require('path');
 
 // Compile JS and CSS files
-mix.js('resources/js/app.js', 'public/js').vue();
-mix.postCss('resources/css/app.css', 'public/css', [
-    require('tailwindcss'),
-    require('autoprefixer'),
-]);
+mix.js('resources/js/app.js', 'public/js').vue({ version: 3 });
+    mix.sass('resources/sass/app.scss', 'public/css');
+
+
+    mix.postCss('resources/css/app.css', 'public/css', [
+        require('tailwindcss'),
+        require('autoprefixer'),
+        require('postcss-import'),
+    ]);
 
 // Aliases for components and images
 mix.alias({
