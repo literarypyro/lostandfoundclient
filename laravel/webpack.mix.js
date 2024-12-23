@@ -2,21 +2,31 @@ const mix = require('laravel-mix');
 const path = require('path');
 
 // Compile JS and CSS files
-mix.js('resources/js/app.js', 'public/js').vue({ version: 3 });
-    mix.sass('resources/sass/app.scss', 'public/css');
+//mix.js('resources/js/app.js', 'public/js').vue({ version: 3 })
+
+mix.js('resources/js/test.js', 'public/js').version();
 
 
-    mix.postCss('resources/css/app.css', 'public/css', [
+mix.js('resources/js/app.js', 'public/js')
+    .vue({ version: 3 })
+    .sass('resources/sass/app.scss', 'public/css')
+    .postCss('resources/css/app.css', 'public/css', [
         require('tailwindcss'),
         require('autoprefixer'),
         require('postcss-import'),
-    ]);
+    ]).version();
 
-// Aliases for components and images
+
+
+
+    // Aliases for components and images
 mix.alias({
     '@components': path.resolve(__dirname, 'resources/js/components'),
     '@images': path.resolve(__dirname, 'resources/images'),
 });
+
+
+
 
 // Copy images from resources to public
 //mix.copy('resources/images', 'public/images');
@@ -34,4 +44,10 @@ mix.webpackConfig({
             },
         ],
     },
+    output: {
+        publicPath: '/lostandfound/laravel/public',
+        chunkFilename: 'js/[name].js?[chunkhash]',
+
+    }
+
 });

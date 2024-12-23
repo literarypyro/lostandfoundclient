@@ -1,8 +1,8 @@
 <template>
 
 <!-- Main navigation container -->
-<nav
-  class="flex-no-wrap relative flex w-full items-center justify-between bg-zinc-50 py-2 shadow-dark-mild dark:bg-neutral-700 lg:flex-wrap lg:justify-start lg:py-4">
+<nav id="nav_menu"
+  class="flex-no-wrap relative flex w-full items-center justify-between lg:flex-wrap lg:justify-start lg:py-4">
   <div class="flex w-full flex-wrap items-center justify-between px-3">
 
     <!-- Collapsible navigation container -->
@@ -27,7 +27,7 @@
         <li class="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
           <!-- Dashboard link -->
           <a
-            class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
+            class=" transition duration-200  hover:ease-in-out  motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
             href="#"
             data-twe-nav-link-ref  @click="createRequest"
             >Create a Request</a
@@ -36,7 +36,7 @@
         <!-- Team link -->
         <li class="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
           <a
-            class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
+            class="transition duration-200 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
             href="#"
             data-twe-nav-link-ref @click="goToItem"
             >Search In Items Inventory</a
@@ -168,7 +168,13 @@ export default {
 
 </script>
 <style>
+#nav_menu {
+  background: rgb(255,0,0);
+  background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(198,0,0,1) 35%, rgba(155,0,0,1) 100%);
+  color:whitesmoke;
 
+
+}
 
 
 

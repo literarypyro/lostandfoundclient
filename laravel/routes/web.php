@@ -84,6 +84,12 @@ Route::post('/registerProfile/{id}',
 Route::post('/registerContact/{id}',
 ['as'=>'reg-user-contact','uses'=>'AuthController@addUserContact']);
 
+/*
 Route::get('/{any}', function () {
     return Inertia::render('Login');// or any custom view for non-matching routes
 })->where('any', '.*'); 
+*/
+
+Route::get('/{any}', function ($any) {
+    return response()->json(['requested' => $any]);
+})->where('any', '.*');

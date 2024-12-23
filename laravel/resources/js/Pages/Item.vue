@@ -1,7 +1,7 @@
 <template>
 
 <!-- Main navigation container -->
-<nav
+<nav id="nav_menu"
   class="flex-no-wrap relative flex w-full items-center justify-between bg-zinc-50 py-2 shadow-dark-mild dark:bg-neutral-700 lg:flex-wrap lg:justify-start lg:py-4">
   <div class="flex w-full flex-wrap items-center justify-between px-3">
 
@@ -27,13 +27,13 @@
         <li class="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
           <!-- Dashboard link -->
           <a
-            class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
+            class="transition duration-200 hover:ease-in-out  motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
             href="#"
             data-twe-nav-link-ref  @click="checkRequestList"
             >Your Missing Items</a
           >
           <a
-            class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
+            class="transition duration-200  hover:ease-in-out  motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
             href="#"
             data-twe-nav-link-ref  @click="createRequest"
             >Create a Request</a
@@ -52,7 +52,7 @@
     <!-- Right elements -->
     <div class="relative flex items-center">
       <!-- Icon -->
-      <a class="me-4 text-neutral-600 dark:text-white" v-on:click="logout">
+      <a class="me-4  text-white" v-on:click="logout">
         <span class="[&>svg]:w-5">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
@@ -194,4 +194,15 @@
   
   <style scoped>
   /* You can add your styles here if needed */
+  #nav_menu {
+  background: rgb(255,0,0);
+  background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(198,0,0,1) 35%, rgba(155,0,0,1) 100%);
+  color:whitesmoke;
+
+
+}
+
+
+
+
   </style>

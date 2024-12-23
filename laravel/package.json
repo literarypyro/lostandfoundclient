@@ -8,8 +8,12 @@
         "hot": "mix watch --hot",
         "prod": "npm run production",
         "production": "mix --production"
+
+
+
     },
     "devDependencies": {
+        "@vue/cli-service": "^5.0.8",
         "axios": "^0.25",
         "file-loader": "^6.2.0",
         "laravel-mix": "^6.0.6",

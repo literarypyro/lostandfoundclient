@@ -1,16 +1,20 @@
+# Ensure the correct MIME type for JavaScript files
+AddType application/javascript .js
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /lostandfound/laravel/
 
-    # Exclude requests for static files (js, css, images, etc.) from rewrite
+    # Ensure static assets (js, css, images) are not rewritten
     RewriteCond %{REQUEST_URI} !^/lostandfound/laravel/public/js/
     RewriteCond %{REQUEST_URI} !^/lostandfound/laravel/public/css/
     RewriteCond %{REQUEST_URI} !^/lostandfound/laravel/public/images/
 
-    # Route all other requests to the public/index.php file (Laravel front controller)
-    RewriteCond %{REQUEST_URI} !^/lostandfound/laravel/public/index.php
-    RewriteRule ^(.*)$ public/index.php/$1 [L]
+    # Route all other requests to index.php (Laravel front controller)
+    # RewriteCond %{REQUEST_URI} !^/lostandfound/laravel/public/index.php
+
+    RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
 
-# Add correct MIME type for JavaScript files
-AddType application/javascript .js
+# Optional: Enable directory listing if needed
+Options +Indexes
