@@ -90,6 +90,9 @@ Route::get('/{any}', function () {
 })->where('any', '.*'); 
 */
 
+/*
+
 Route::get('/{any}', function ($any) {
     return response()->json(['requested' => $any]);
 })->where('any', '.*');
+*/

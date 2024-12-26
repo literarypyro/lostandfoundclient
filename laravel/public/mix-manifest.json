@@ -1,5 +1,6 @@
 {
-    "/js/test.js": "/js/test.js?id=ddd070551091ea5211697ee752fcca0a",
-    "/js/app.js": "/js/app.js?id=ca7dc72b8094bb9358b276e326f0f2f0",
-    "/css/app.css": "/css/app.css?id=998097198b8f83ae20ff09d9066b98c0"
+    "/js/test.js": "/js/test.js?id=54b5a11d5e0155842dc040e362e72881",
+    "/js/app.js": "/js/app.js?id=df89bae45c44afeab3f80dae08db0ac8",
+    "/css/app.css": "/css/app.css?id=998097198b8f83ae20ff09d9066b98c0",
+    "/bootstrap/ssr/ssr.js": "/bootstrap/ssr/ssr.js?id=ac747c111490d0571ae25e5323c6ea70"
 }

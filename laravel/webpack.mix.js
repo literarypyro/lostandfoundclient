@@ -6,6 +6,7 @@ const path = require('path');
 
 mix.js('resources/js/test.js', 'public/js').version();
 
+mix.copy('resources/js/ssr.js', 'bootstrap/ssr/ssr.js');
 
 mix.js('resources/js/app.js', 'public/js')
     .vue({ version: 3 })
@@ -47,7 +48,11 @@ mix.webpackConfig({
     output: {
         publicPath: '/lostandfound/laravel/public',
         chunkFilename: 'js/[name].js?[chunkhash]',
+        module: true, // Enable module output for ESM support
 
-    }
-
+    },
+    experiments: {
+        outputModule: true, // Enable output module for ESM
+    },
 });
+
