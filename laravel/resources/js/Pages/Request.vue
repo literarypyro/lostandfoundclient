@@ -1,75 +1,63 @@
 <template>
+  
+<div class="w-full bg-[#0A2647] text-white"> 
 
-<!-- Main navigation container -->
-<nav id="nav_menu"
-  class="flex-no-wrap relative flex w-full items-center justify-between lg:flex-wrap lg:justify-start lg:py-4">
-  <div class="flex w-full flex-wrap items-center justify-between px-3">
-
-    <!-- Collapsible navigation container -->
-    <div
-      class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
-      id="navbarSupportedContent1"
-      data-twe-collapse-item>
-      <!-- Logo -->
-      <a
-        class="mb-4 me-5 ms-2 mt-3 flex items-center text-neutral-900 hover:text-neutral-900 focus:text-neutral-900 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:text-neutral-400 lg:mb-0 lg:mt-0"
-        href="#">
-        <img
-          src="https://tecdn.b-cdn.net/img/logo/te-transparent-noshadows.webp"
-          style="height: 15px"
-          alt="TE Logo"
-          loading="lazy" />
-      </a>
-      <!-- Left navigation links -->
-      <ul
-        class="list-style-none me-auto flex flex-col ps-0 lg:flex-row"
-        data-twe-navbar-nav-ref>
-        <li class="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
-          <!-- Dashboard link -->
-          <a
-            class=" transition duration-200  hover:ease-in-out  motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
-            href="#"
-            data-twe-nav-link-ref  @click="createRequest"
-            >Create a Request</a
-          >
-        </li>
-        <!-- Team link -->
-        <li class="mb-4 lg:mb-0 lg:pe-2" data-twe-nav-item-ref>
-          <a
-            class="transition duration-200 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
-            href="#"
-            data-twe-nav-link-ref @click="goToItem"
-            >Search In Items Inventory</a
-          >
-        </li>
-      </ul>
-      <!-- Left links -->
+  <div class="max-w-7xl mx-auto px-6 py-2">
+      <h1 class="text-white text-2xl font-semibold tracking-wide">Lost and Found System</h1>
     </div>
 
-    <!-- Right elements -->
-     <div class="relative flex items-center">
-      <!-- Icon -->
-      <a class="me-4 text-white" v-on:click="logout">
-        <span class="[&>svg]:w-5">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-open-fill" viewBox="0 0 16 16">
-  <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15zM11 2h.5a.5.5 0 0 1 .5.5V15h-1zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1"/>
-</svg>
+  </div> 
+ 
 
-
-        </span>
-      </a>
-</div>
-
-    <!-- Right elements -->
-  </div>
-</nav>
-
-     <section class="bg-white w-full max-w-screen-xl">
+  <nav class="w-full bg-gradient-to-r from-[#0A2647] via-[#144272] to-[#205295] mb-8">
+    <div class="max-w-7xl mx-auto px-6 py-1">
+      <div class="flex items-center justify-between">
+        <!-- Left side: Navigation Items -->
+        <div class="flex items-center space-x-6">
    
 
 
-<div>Requests You Have Made</div>
+                
+          <button  @click="checkRequestList"  class="px-3 py-1.5 text-white text-sm rounded-lg bg-white/20 flex items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+            </svg>
+            <span>Your Missing Items</span>
+          </button>
 
+
+          <button @click="createRequest" class="px-3 py-1.5 text-white text-sm hover:bg-white/10 rounded-lg transition-all duration-200 flex items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+            <span>Create a Request</span>
+          </button>
+
+          <button  @click="goToItem" class="px-3 py-1.5 text-white text-sm hover:bg-white/10 rounded-lg transition-all duration-200 flex items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <circle cx="11" cy="11" r="8"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35"/>
+            </svg>
+            <span>Search In Items Inventory</span>
+          </button>
+
+
+        </div>
+
+        <!-- Right side: Logout -->
+        <button   @click="logout" class="text-white hover:bg-white/10 p-2 rounded-lg transition-all duration-200">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+
+     <section class="bg-white w-full max-w-screen-xl">
+   
+      <div class="px-6 py-4"> <!-- Added padding container --> <h1 class="text-2xl font-semibold text-gray-900">My Lost Item Requests</h1> <p class="text-gray-600 mt-1">Track and manage your submitted items</p> </div>
 
 <div class="grid-cols-2 w-full inline-flex flex-row flex-wrap">
 
@@ -170,13 +158,18 @@ export default {
 </script>
 <style>
 #nav_menu {
-  background: rgb(255,0,0);
-  background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(198,0,0,1) 35%, rgba(155,0,0,1) 100%);
+
+  background: linear-gradient(135deg, #0A2647, #144272, #205295);
+
+
   color:whitesmoke;
 
 
 }
 
+.head {
 
+  font-family: 'Inter', sans-serif;
+}
 
 </style>

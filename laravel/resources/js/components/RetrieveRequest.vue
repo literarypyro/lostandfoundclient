@@ -1,35 +1,68 @@
 <template >
-<section>
-<div class="flex flex-column flex-wrap w-full">    
-<div class='w-full items-center mt-5 pt-2 mb-3'>
-      
-    <div class="items-center w-full justify-center flex "> 
-    <img :src="getImagePath(request?.details?.picture)" alt="Image Item" v-if="request?.details?.picture"/>
-</div>
-    <div class="w-full text-center ">
+ <section class="bg-white rounded-lg shadow-sm w-96">
+    <div class="p-6">
+      <!-- Image Section -->
+  	<div class="flex flex-col w-full">
+    	<div class="w-full flex justify-center mb-6">
+      	<div class="max-w-[280px]"> <!-- Constrained max width -->
+        	<img
+          	v-if="request?.details?.picture"
+          	:src="getImagePath(request?.details?.picture)"
+          	alt="Image Item"
+          	class="rounded-lg w-full h-auto object-contain" 
+        	/>
+        	<div v-if="request?.details?.picture" class="mt-2 text-gray-500 text-sm text-center">
+          	(Image for Reference)
+        	</div>
+      	</div>
+    	</div>
 
-    <div  v-if="request?.details?.picture" class="mt-4 font-bold">(Image for Reference)</div>
+
+        <!-- Title and Description -->
+        <div class="text-center mb-6">
+          <h2 class="text-xl font-semibold text-gray-900 mb-2">
+            {{ request?.title }}
+          </h2>
+          <div class="text-lg text-gray-700">
+            {{ request?.description }}
+          </div>
+        </div>
+
+
+        <!-- Details Section -->
+        <div class="space-y-3 text-gray-700">
+          <div v-if="request?.details?.shape && request?.details?.shape !== 'N/A'" class="flex">
+            <span class="font-medium w-32">SHAPE:</span>
+            <span>{{ request?.details?.shape }}</span>
+          </div>
+          
+          <div v-if="request?.details?.color && request?.details?.color !== 'N/A'" class="flex">
+            <span class="font-medium w-32">COLOR:</span>
+            <span>{{ request?.details?.color }}</span>
+          </div>
+          
+          <div v-if="request?.details?.length && request?.details?.length !== 'N/A'" class="flex">
+            <span class="font-medium w-32">LENGTH:</span>
+            <span>{{ request?.details?.length }}</span>
+          </div>
+          
+          <div v-if="request?.details?.width && request?.details?.width !== 'N/A'" class="flex">
+            <span class="font-medium w-32">WIDTH:</span>
+            <span>{{ request?.details?.width }}</span>
+          </div>
+          
+          <div v-if="request?.details?.other_details && request?.details?.other_details !== 'N/A'" class="flex">
+            <span class="font-medium w-32">OTHER DETAILS:</span>
+            <span>{{ request?.details?.other_details }}</span>
+          </div>
+        </div>
+      </div>
     </div>
-
-</div>
-
-<div class="w-full text-center">
-
-<div class="mt-4 font-bold text-xl">{{  request?.title }}</div>
-<div class="font-bold text-lg">{{  request?.description }}</div>
-</div>
-<div class='ml-8 mt-3 p-3'>
-
-<div v-if="request?.details?.shape && request?.details?.shape!='N/A'">SHAPE: {{ request?.details?.shape }}</div>
-<div v-if="request?.details?.color && request?.details?.color!='N/A'">COLOR: {{ request?.details?.color }}</div>
-<div v-if="request?.details?.length && request?.details?.length!='N/A'">LENGTH: {{ request?.details?.length }}</div>
-<div v-if="request?.details?.width && request?.details?.width!='N/A'">WIDTH: {{ request?.details?.width }}</div>
-<div v-if="request?.details?.other_details && request?.details?.other_details!='N/A'">OTHER DETAILS: {{ request?.details?.other_details }}</div>
-</div>
+  </section>
 
 
-</div>
-</section>
+
+
 </template>
 <script>
 import axios from 'axios';
