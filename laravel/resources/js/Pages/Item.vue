@@ -8,75 +8,108 @@
 
 </div> 
 
-
 <nav class="w-full bg-gradient-to-r from-[#0A2647] via-[#144272] to-[#205295]">
   <div class="max-w-7xl mx-auto px-6 py-1">
     <div class="flex items-center justify-between">
       <!-- Left side: Navigation Items -->
       <div class="flex items-center space-x-6">
- 
-<!-- Your Missing Items - not active --> 
-<button @click="checkRequestList" class="px-3 py-1.5 text-white/80 text-sm hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 flex items-center space-x-2"> 
-<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/> </svg> 
+     	<!-- Your Missing Items -->
+
+      <button @click="checkRequestList"  class="px-3 py-1.5 text-white/80 text-sm hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 flex items-center space-x-2"> 
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"> 
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/> </svg> 
 
 
 <span>Your Missing Items</span> </button> 
 
 
-<!-- Create a Request - active --> 
-<button  @click="createRequest" class="px-3 py-1.5 text-white bg-white/20 rounded-lg text-sm flex items-center space-x-2"> 
-<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/> </svg> <span>Create a Request</span> 
+
+
+
+    	<button @click="createRequest"  class="px-3 py-1.5 text-sm text-white/80 hover:text-white hover:bg-white/10
+                 	rounded-lg transition-all duration-200 flex items-center space-x-2">
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"> 
+  
+  
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/> </svg> <span>Create a Request</span> 
 
 
 </button>
 
 
 
-        <button  @click="goToItem" class="px-3 py-1.5 text-white text-sm hover:bg-white/10 rounded-lg transition-all duration-200 flex items-center space-x-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+
+
+    	<button @click="goToItem"  class="px-3 py-1.5 text-white text-sm bg-white/20 rounded-lg flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <circle cx="11" cy="11" r="8"/>
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35"/>
           </svg>
           <span>Search In Items Inventory</span>
         </button>
+        </div>
 
-
-      </div>
-
-      <!-- Right side: Logout -->
-      <button   @click="logout" class="text-white hover:bg-white/10 p-2 rounded-lg transition-all duration-200">
+        <!-- Right side: Logout -->
+      <button   class="text-white hover:bg-white/10 p-2 rounded-lg transition-all duration-200">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
         </svg>
       </button>
+
+
+<!-- Your Missing Items - not active --> 
+
+
+<!-- Create a Request - active --> 
+
+
+
+
+
+
+
     </div>
   </div>
 </nav>
 
-    <section class="bg-white w-full max-w-screen-xl">
-	<div class="py-4 px-2 mx-auto max-w-screen-xl sm:py-4 lg:px-6 w-full">
-			<div class="col-span-2 sm:col-span-2 md:col-span-2 bg-stone-50 w-full">
-        <SearchItem @update:searchFromItems="proceedSearch"  />
-			</div>
-
-
-
-
+   <section class="bg-white w-full max-w-screen-xl mx-auto">
+	<!-- Search Component Container - Centered -->
+	<div class="max-w-4xl mx-auto py-4 px-4">
+  	<div class="w-full bg-stone-50">
+    	<SearchItem @update:searchFromItems="proceedSearch" />
+  	</div>
 	</div>
-	<div class="py-4 px-2 grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 mx-auto max-w-screen-xl sm:py-4 lg:px-6 w-full inline-flex">
 
 
-    <div class=" gap-4 w-2/3 " >
-          <ItemList :selectedSearchObject="searchObject" v-if="enableItemSearch" @update:selectedItem="retrieveSelectedItem" />
-				</div>
-     <div class=" bg-sky-50 h-auto w-1/3 p-2 md:h-full flex flex-col">
-       <RetrieveItem :selectedItem="itemID" v-if="getItem" />
-			</div>
-    </div>
-</section>
+	<!-- Three-Column Layout Container -->
+	<div class="container mx-auto px-4 py-6">
+  	<div class="flex gap-6">
+    	<!-- Left Column - ItemList -->
+    	<div class="w-1/4 bg-stone-50 rounded-lg">
+      	<ItemList
+        	:selectedSearchObject="searchObject"
+        	v-if="enableItemSearch"
+        	@update:selectedItem="retrieveSelectedItem"
+      	/>
+    	</div>
 
 
+    	<!-- Center Column - Main Content -->
+    	<div class="w-1/2">
+      	<!-- Additional content or keep empty for balance -->
+    	</div>
 
+
+    	<!-- Right Column - RetrieveItem -->
+    	<div class="w-1/4 bg-sky-50 rounded-lg p-4">
+      	<RetrieveItem
+        	:selectedItem="itemID"
+        	v-if="getItem"
+      	/>
+    	</div>
+  	</div>
+	</div>
+  </section>
 
 
 

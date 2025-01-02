@@ -2,7 +2,7 @@
      <section class="bg-white w-full max-w-screen-xl">
    
 <div class="mt-2 pt-3 inline-flex flex-row flex-wrap auto-cols-auto">
-    <div v-for="item in retrievedItems" :key="item?.id" class="rounded-md p-1 w-1/3">
+    <div v-for="item in retrievedItems" :key="item?.id" class="rounded-md p-1 w-1/2">
     <div class="font-bold text-[#002D74]">{{ item?.category?.type }}</div>
      <div class="bg-stone-100  h-auto p-1">   
 

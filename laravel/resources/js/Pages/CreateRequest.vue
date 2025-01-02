@@ -105,6 +105,26 @@
           	</select>
         	</div>
         	<!-- Continue with other Step 1 fields -->
+          <div class="w-auto px-1 "> <div class="mt-3"><label>Item Name</label> <input class="p-1 mt-2 min-w-12 rounded-xl border h-auto w-80" type='text' id='title' v-model="form.title" /> </div> </div> <div class="w-full px-1 "> <div class="mt-3"><label>Date Lost</label>
+            
+            <div class="space-y-2">
+          <label class="block text-gray-700 font-medium text-sm">
+            Search Date
+          </label>
+          <Datepicker
+            id="datelost"
+            v-model="form.datelost"
+            format="dd MMM yyyy"
+            :clearable="false"
+            inputClassName="w-full p-2.5 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#002D74] focus:border-[#002D74] bg-gray-50 text-sm text-gray-700"
+          />
+        </div>
+  
+            
+            </div> </div> 
+            <div class="md:w-2/2 px-1"> <div class="mt-3 w-auto"><label>Description</label></div>
+            <div > <textarea rows="4" class="p-1 mt-1 rounded-xl border h-full w-80 min-w-12" id='description' v-model="form.description"></textarea></div> 
+          </div>
       	</div>
     	</template>
 
@@ -415,14 +435,47 @@ props: {
 </script>
 <style>
 
-#nav_menu {
-  background: rgb(255,0,0);
-  background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(198,0,0,1) 35%, rgba(155,0,0,1) 100%);
-  color:whitesmoke;
-
-
+/* Custom styles for vuejs3-datepicker */
+.datepicker {
+  font-family: inherit;
 }
 
+
+.datepicker-input {
+  width: 100%;
+  padding: 0.625rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+}
+
+
+.datepicker-input:focus {
+  outline: none;
+  border-color: #002D74;
+  box-shadow: 0 0 0 2px rgba(0, 45, 116, 0.2);
+}
+
+
+.datepicker-calendar {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+
+.datepicker-header {
+  background-color: #002D74;
+  color: white;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+
+.datepicker-day.selected {
+  background-color: #002D74 !important;
+  color: white;
+}
 
 
 
